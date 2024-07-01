@@ -1,0 +1,16 @@
+<div class="container_main_bg">
+  <div class="container_info">
+    <div class="container_cards">
+      <h2>Sitios Disponibles</h2>
+      <div class="card" *ngFor="let item of data">
+        <div class="card_image_content">
+          <img *ngIf="item.logotipo" [src]="'data:image/png;base64,'+item.logotipo">
+        </div>
+       <p>{{item.nombre}}</p>
+        <button mat-button class="buttons" id="search" (click)="verMenu()">
+          Ver menu
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
