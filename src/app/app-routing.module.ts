@@ -9,6 +9,7 @@ import { Restaurante_formComponent } from './modules/restaurante_form/restaurant
 import { RecuperarClaveComponent } from './components/recuperarClave/recuperarClave.component';
 import { RestablecerClaveComponent } from './components/restablecerClave/restablecerClave.component';
 import { Usuario_layoutComponent } from './layouts/dashboard/usuario_layout/usuario_layout.component';
+import { RegistroMenuComponent } from './layouts/dashboard/registro-menu/registro-menu.component';
 
 const routes: Routes = [
   {path:'',                                  redirectTo:'login', pathMatch:'full'},
@@ -24,9 +25,9 @@ const routes: Routes = [
   },
   {path:'home/pedidos',                      component: ProveedorComponent,
     children : [
-      //{path:'/registrar_menu'},
+      {path:'registrar_menu',               component: RegistroMenuComponent},
       {path:'pedido',                        component:PedidoComponent},
-      //{path:'/historial_pedido'}
+      //{path:'historial_pedido'}
     ]
   },
   {path:'restaurantes/formulario_registro',  component:Restaurante_formComponent}

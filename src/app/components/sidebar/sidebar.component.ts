@@ -37,6 +37,11 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(["home/seguridad/desbloquear_usuario"]);
     this.ocultarSideBar();
   }
+
+  navigateToRegistroMenu(){
+    this.router.navigate(["home/pedidos/registrar_menu"]);
+    this.ocultarSideBar();
+  }
   navigateToPedido(){
     this.router.navigate(["home/pedidos/pedido"]);
     this.ocultarSideBar();

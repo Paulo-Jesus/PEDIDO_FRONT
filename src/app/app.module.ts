@@ -13,6 +13,9 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SuccessComponent } from './services/Dialogs/success/success.component';
 import { ProveedorComponent } from './layouts/proveedor/proveedor.component';
 import { PedidoComponent } from './components/pedido/pedido.component';
+import { RegistroMenuComponent } from './layouts/dashboard/registro-menu/registro-menu.component';
+import { AgregarMenuComponent } from './layouts/dashboard/registro-menu/agregar-menu/agregar-menu.component';
+
 
 /*MATERIALS*/
 import { ReactiveFormsModule } from '@angular/forms';
@@ -36,7 +39,9 @@ import { RecuperarClaveComponent } from './components/recuperarClave/recuperarCl
 import { RestablecerClaveComponent } from './components/restablecerClave/restablecerClave.component';
 import { Usuario_layoutComponent } from './layouts/dashboard/usuario_layout/usuario_layout.component';
 import { AddUserComponent } from './layouts/dashboard/usuario_layout/add-edit-search-usuario/add-user/add-user.component';
-
+import {MatCardModule} from '@angular/material/card';
+import {NgFor} from '@angular/common';
+import { ModificarMenuComponent } from './layouts/dashboard/registro-menu/modificar-menu/modificar-menu.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +59,10 @@ import { AddUserComponent } from './layouts/dashboard/usuario_layout/add-edit-se
     RecuperarClaveComponent,
     RestablecerClaveComponent,
     Usuario_layoutComponent,
-    AddUserComponent
+    AddUserComponent,
+    RegistroMenuComponent,
+    AgregarMenuComponent,
+    ModificarMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +83,9 @@ import { AddUserComponent } from './layouts/dashboard/usuario_layout/add-edit-se
     DialogModule,
     MatPaginatorModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule,
+    NgFor
 
   ],
   providers: [],
