@@ -54,8 +54,8 @@ export class RegistroMenuComponent implements OnInit  {
 
   openDialogAgregar() {
     this.dialog.open(AgregarMenuComponent, {
-      width: '50%',
-      height:'70%'
+      width: '50vw',
+      height:'70vh'
     });
   }
   openDialogModificar(nombre: string, categoria:string, precio:string){

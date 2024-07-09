@@ -4,20 +4,20 @@ import { Observable } from 'rxjs';
 import { Enviroment } from 'src/enviroments/enviroment';
 import { Login_Usuario } from '../interfaces/Login_Usuario';
 import { Router } from '@angular/router';
+import { LoginDTO } from '../interfaces/LoginDTO';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-
-url = Enviroment.endpoint;
+  ApiUrl = Enviroment.endpoint;
+  IniciarSesionGoogle = "/api/Login/IniciarSesionGoogle";
+  
 
 constructor(private http:HttpClient, private router:Router ) { }
-
-
-  login(usuario:Login_Usuario):Observable<any>{
-    const url = `${this.url}/validarLogin`; 
-    return this.http.post(url,usuario);
+  
+loginGoogle(data: LoginDTO):Observable<LoginDTO>{
+    return this.http.post<LoginDTO>(`${this.ApiUrl}${this.IniciarSesionGoogle}`, data);
   }
 /*
   login(usuario:any):Observable<any>{

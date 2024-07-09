@@ -5,6 +5,7 @@
     justify-content: center;
     align-items: center;
 }
+
 .container_info{
     width: 90%;
     height: 90%;
@@ -86,7 +87,7 @@
     border: 1px solid rgba(0, 0, 0, 0.495);
 }
 
-mat-label{
+.mat-label{
     width: 80%;
     padding: 10px 0;
     color: rgba(0, 0, 0, 0.495);

@@ -1,6 +1,7 @@
 import { Dialog } from '@angular/cdk/dialog';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthGoogleService } from 'src/app/services/auth-google.service';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -13,14 +14,17 @@ export class SidebarComponent implements OnInit {
   constructor(
     private router:Router, 
     private _loginService:LoginService,
-    private dialog:Dialog
+    private dialog:Dialog,
+    private authGoogleService: AuthGoogleService
   ) { }
 
   ngOnInit() {
   }
   
   logout(){
+    this.authGoogleService.logout();
     this._loginService.logout();
+    localStorage.clear();
     this.ocultarSideBar();
   }
 

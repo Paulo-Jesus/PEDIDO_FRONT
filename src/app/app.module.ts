@@ -42,6 +42,7 @@ import { AddUserComponent } from './layouts/dashboard/usuario_layout/add-edit-se
 import {MatCardModule} from '@angular/material/card';
 import {NgFor} from '@angular/common';
 import { ModificarMenuComponent } from './layouts/dashboard/registro-menu/modificar-menu/modificar-menu.component';
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,9 @@ import { ModificarMenuComponent } from './layouts/dashboard/registro-menu/modifi
     MatDialogModule,
     MatInputModule,
     MatCardModule,
-    NgFor
+    NgFor,
+    OAuthModule.forRoot(),
+    HttpClientModule
 
   ],
   providers: [],
