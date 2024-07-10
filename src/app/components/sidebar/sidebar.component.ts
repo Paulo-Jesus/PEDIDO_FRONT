@@ -24,7 +24,7 @@ export class SidebarComponent implements OnInit {
   logout(){
     this.authGoogleService.logout();
     this._loginService.logout();
-    localStorage.clear();
+    sessionStorage.clear();
     this.ocultarSideBar();
   }
 

@@ -53,22 +53,6 @@ export class LoginComponent{
   }
 
   login() {
-    const profileemail = localStorage.getItem("profileemail");
-    if (profileemail !== null) {
-      console.log("entro");
-      const loginDTO = { Correo: profileemail, Contrasena: " "};
-      console.log(loginDTO);
-      this._loginService.loginGoogle(loginDTO).subscribe(response =>{
-        console.log("Datos correctos");
-        
-        this.router.navigate(['/home/seguridad/usuarios']);
-        
-      }, error =>{
-        console.log("Datos incorrectos",error);
-      });
-    }else {
-      this.authGoogleService.login();
-      this.login();
-    }
+    this.authGoogleService.login();
   }
 }
