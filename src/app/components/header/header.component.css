@@ -3,12 +3,12 @@
 header{
     width: 100vw;
     height: 7vh;
-    box-shadow: 5px 2px 10px rgb(0, 0, 0);
-    font-family: "Montserrat", sans-serif; 
+    box-shadow: 5px 2px 10px var(--bg_negro_100);
     z-index: 2;
-    background-color: #ffffff;
+    background-color: var(--bg_blanco_100);
     position: relative;
 }
+
 .container_header{
     width: 100%;
     height: 100%;
@@ -16,8 +16,8 @@ header{
     justify-content: flex-end;
     flex-direction: row;
     align-items: center;
-    font-family: "Montserrat", sans-serif; 
 }
+
 .icon_content{
     opacity: 0;
     width: 0;
@@ -33,9 +33,9 @@ header{
 }
 .mat-h2, .mat-headline-6, .mat-typography .mat-h2, .mat-typography .mat-headline-6, .mat-typography h2 {
     font-size: 20px;
-    font-weight: 500;
+    font-weight: var(--fw-500);
     line-height: 32px;
-    font-family: "Montserrat", sans-serif; 
+    font-family: var(--letra_montserrat);
     letter-spacing: .0125em;
     margin: 0 0 16px;
 }
@@ -49,27 +49,30 @@ header{
 }
 .container_name h2{
     text-align: end;
+    font-family: var(--letra_montserrat);
+    font-size: 0.9rem;
 }
 
 .letter_content{
-    background-color: rgb(127,103,190);
+    background-color: var(--bg_lila_100);
     width: 30px;
     height: 30px;
     border-radius: 100%;
 }
 .letter_content p{
     line-height: 30px;
-    color: #ffffff;
-    font-weight: 700;
+    color: var(--color_texto_blanco);
+    font-weight: var(--fw-700);
     text-align: center;
+    font-family: var(--letra_montserrat);
 }
 
-@media screen and (max-width:500px) {
+@media screen and (max-width:792px) {
     header{
         width: 100%;
         height: 7vh;
-        box-shadow: 5px 2px 6px rgba(0, 0, 0, 0.395);
-        font-family: "Montserrat", sans-serif; 
+        box-shadow: 5px 2px 6px var(--bg-negro_45);
+        font-family: var(--letra_montserrat);
         z-index: 1;
         position: absolute;
         top: 0;
@@ -86,7 +89,7 @@ header{
     }
     .icon_content i{
         font-size: 1.6rem;
-        font-weight: bolder;
+        font-weight: var(--fw_bolder);
     }
     .icon_content button{
         width: 0;

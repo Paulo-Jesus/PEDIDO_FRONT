@@ -4,6 +4,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { IRestaurante } from 'src/app/interfaces/IRestaurante';
 import { RestauranteService } from 'src/app/services/restaurante.service';
+import { Env_Mensajes } from 'src/enviroments/Env_Mensajes';
 
 @Component({
   selector: 'app-restaurante_form',
@@ -64,10 +65,10 @@ export class Restaurante_formComponent implements OnInit {
 
     this._restauranteService.registrarDatos(restaurante).subscribe(response=>{
       this.load = false;     
-      console.log("Datos registrados");
+      console.log(Env_Mensajes.datosRegistrados);
     },error=>{
       this.load = false;
-      console.log("NO SE PUDO REGISTRAR EL RESTAURANTE. ",error);
+      console.log(Env_Mensajes.datosNoRegistrados,error);
     });
     }
   }

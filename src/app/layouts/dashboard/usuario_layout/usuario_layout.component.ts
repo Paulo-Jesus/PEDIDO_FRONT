@@ -16,6 +16,7 @@ export class Usuario_layoutComponent implements OnInit {
   datosTabla:any;
   dataSource = new MatTableDataSource();
   displayedColumns: string[] = ['action', 'identificacion', 'nombre', 'nombreUsuario', 'empresa' ,'estado'];
+  load:boolean=false;
 
   constructor(
     private fb: FormBuilder,
@@ -29,9 +30,14 @@ export class Usuario_layoutComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.obtenerDatos();
   }
 
   setSelection(event : Event){}
+
+  obtenerDatos(){
+    this.load = false;
+  }
 
   rowSelect(element:any){
     /*

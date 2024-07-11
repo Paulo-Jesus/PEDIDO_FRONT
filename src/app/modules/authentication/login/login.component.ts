@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
+import { AuthGoogleService } from '../../../services/auth-google.service';
 
 @Component({
   selector: 'app-login',
@@ -12,17 +13,26 @@ export class LoginComponent{
 
   hide = true;
   form : FormGroup;
+  isLoggedIn: boolean = false;
+  lastLoggedInUser: string | null | undefined;
 
   constructor(
     private fb:FormBuilder,
     private _loginService:LoginService,
-    private router:Router
+    private router:Router,
+    private authGoogleService: AuthGoogleService
   ) {
     this.form = this.fb.group({
       nombreUsuario : new FormControl ('',Validators.required),
       clave : new FormControl ('',Validators.required)
     })
    }
+
+   ngOnInit() {
+    // Recuperar datos del último inicio de sesión desde localStorage
+    this.lastLoggedInUser = localStorage.getItem('lastLoggedInUser');
+  }
+
 
 
   onSubmit(){
@@ -41,4 +51,9 @@ export class LoginComponent{
   vistaRecuperarClave(){
     this.router.navigate(['/recuperar_clave']);
   }
+
+  login() {
+    this.authGoogleService.login();
+  }
+
 }

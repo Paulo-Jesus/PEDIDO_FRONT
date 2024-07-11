@@ -12,6 +12,7 @@ export class PedidoComponent implements OnInit {
   data!:IRestaurante[];
   imgB64! : string;
   images: HTMLImageElement[] = [];
+  load:boolean=false;
 
   constructor(
     private _restauranteService:RestauranteService
@@ -22,24 +23,26 @@ export class PedidoComponent implements OnInit {
   }
 
   public obtenerDatos(){
+    this.load = false;
     this._restauranteService.obtenerDatos().subscribe(response=>{
       this.data = response.data;
       for(let i = 0; i< this.data.length; i++){
         this.imgB64 = response.data[i].logotipo;
       }    
+      this.load = false;  
       console.log(response);      
     })
   }
 
-  b64ToImage(imgB64:string, index:number){
-    let image = new Image();
-    image.onload = () =>{
-      console.log("Imagen cargada",image);
-    }
-    image.src = 'response.data:logotipo/png;base64'+imgB64;
-    this.images[index] = image;
-    return image;
-  }
+  // b64ToImage(imgB64:string, index:number){
+  //   let image = new Image();
+  //   image.onload = () =>{
+  //     console.log("Imagen cargada",image);
+  //   }
+  //   image.src = 'response.data:logotipo/png;base64'+imgB64;
+  //   this.images[index] = image;
+  //   return image;
+  // }
 
   verMenu(){}
 }

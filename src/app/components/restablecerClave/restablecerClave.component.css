@@ -36,10 +36,11 @@
     width: 80%;
     height: 70%;
 }
-.content_info h1{
+.content_info .container_header .header_title h1{
     text-align: center;
     padding-top: 30px;
     font-weight: 600;
+    font-family: var(--letra_montserrat);
 }
 
 /*form*/

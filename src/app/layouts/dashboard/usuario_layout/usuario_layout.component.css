@@ -24,8 +24,8 @@
     line-height: 10%;
 }
 .container_header_title h1{
-    color: rgb(127,103,190);
-    font-weight: 700;
+    color: var(--bg_lila_100);
+    font-weight: var(--fw-700);
 }
 
 /*CONTENDOR BOTONES*/
@@ -69,14 +69,14 @@
 }
 
 .container_input_buttons .content_id label{
-   color: rgba(0, 0, 0, 0.495);
+    color: var(--bg_negro_45);
 }
 
 .container_input_buttons .content_id input{
     height: 20px;
     width: 100%;
     border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.495);
+    border: 1px solid var(--bg_negro_45);
 }
 
 /*SELECCION MULTIPLE*/
@@ -91,16 +91,20 @@
 mat-label{
     width: 80%;
     padding: 10px 0;
-    color: rgba(0, 0, 0, 0.495);
+    color: var(--bg_negro_45);
 }
 .select{
-    border: 1px solid rgba(0, 0, 0, 0.495);
+    border: 1px solid var(--bg_negro_45);
     width: 80%;
     height: 40px;
     border-radius: 5px;
     padding-right: 5px;
     padding-top: 5px;
     padding-left: 10px;
+}
+.container_selected_button .select{
+    border: 1px solid rgba(0, 0, 0, 0.396);
+    border-radius: 3px;
 }
 
 /*BOTONES*/
@@ -114,9 +118,9 @@ mat-label{
 
 .buttons{
     width: 40%;
-    background-color: rgb(127,103,190);
-    color: #ffffff;
-    font-weight: 600;
+    background-color: var(--bg_lila_100);
+    color: var(--color_texto_blanco);
+    font-weight: var(--fw-600);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -125,12 +129,12 @@ mat-label{
 
 .buttons i{
     font-size: 1.2rem;
-    font-weight: 800;
+    font-weight: var(--fw-800);
 }
 
 /*TABLA*/
 .container_table{
-    background-color: #ffffff;
+    background-color: var(--bg_blanco_100);
     width: 100%;
     height: 50vh;
     position: relative;
@@ -138,7 +142,20 @@ mat-label{
     margin: 0 auto;
 }
 
-@media screen and (max-width:500px) {
+.loader_content{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width:792px) {
     .main_container_bg{
         width: 100%;
         height: 100%;
@@ -146,9 +163,8 @@ mat-label{
         justify-content: center;
         align-items: center;
         position: relative;
-        top: 7vh;
-        z-index: 3;
-        background-color: #ffffff;
+        top:4vh;
+        background-color: var(--bg_blanco_100);
     }
     .container_header .container_header_title{
         height: 10vh;
@@ -194,6 +210,10 @@ mat-label{
         align-items: center;
         flex-direction: column;
     }
+    .container_selected_button .select{
+        border: 1px solid rgba(0, 0, 0, 0.396);
+        border-radius: 3px;
+    }
 
     .container_buttons{
         width: 70%;
@@ -209,10 +229,22 @@ mat-label{
     .container_table{
         width: 100%;
         height: 50vh;
-        border: 1px solid rgba(0, 0, 0, 0.273);
+        border: 1px solid var(--bg_negro_33);
         position: relative;
         top: 20vh;
         margin: 0 auto;
         overflow-y: scroll;
+    }
+    .loader_content{
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.1);
+        position: absolute;
+        z-index: 0;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }

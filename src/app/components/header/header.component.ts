@@ -1,6 +1,7 @@
 import { Dialog } from '@angular/cdk/dialog';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SidebarComponent } from '../sidebar/sidebar.component';
+import { TokenDecoderService } from 'src/app/services/Token/token-decoder.service';
 
 @Component({
   selector: 'app-header',
@@ -9,10 +10,14 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 })
 export class HeaderComponent implements OnInit {
 
+  NombreUsuario!: string;
   @ViewChild('sidebar_container') sidebar_container! : SidebarComponent;
-  constructor(private dialogRef : Dialog) { }
+  constructor(private tokenService: TokenDecoderService,
+              private dialogRef: Dialog
+            ) { }
 
   ngOnInit() {
+    this.NombreUsuario = this.tokenService.obtainName();
   }
 
   verMenu(){

@@ -7,7 +7,7 @@
     position: relative;
 }
 .main_container_bg .container_info{
-    width: 90%;
+    width: 100%;
     height: 90%;
 }
 .main_container_bg .container_info .header_title_content{
@@ -17,11 +17,12 @@
     flex-direction: row;
 }
 .main_container_bg .container_info .header_title_content h1{
-    color: rgb(127,103,190);
+    color: var(--boton_lila);
     font-weight: 600;
     line-height: 7vh;
     text-align: center;
     width: 90%;
+    font-family: var(--letra_montserrat);
 }
 
 
@@ -34,7 +35,7 @@
     align-items: center;
 }
 .container_main_actions .container_main_actions_left{
-    width: 30%;
+    width: 70%;
 }
 .container_main_actions .container_main_actions_left .container_name p{
     font-weight: 600;
@@ -44,40 +45,45 @@
     flex-direction: row;
 }
 #clean{
-    background-color: red;
-    color: #ffffff;
+    background-color: var(--boton_rojo);
+    color: var(--color_texto_blanco);
     margin: 10px 0 0 10px;
     width: 30px;
     height: 40px;
 }
 .container_main_actions .container_main_actions_left #checkSelect{
     width: 90%;
+    margin-right: 10px;
 }
 .mat-mdc-text-field-wrapper {
     border-bottom: 0;
 }
 
 .container_main_actions .container_main_actions_right{
-    width: 70%;
-}
-.container_main_actions_right .buttons_content_actions{
+    width: 25%;
     display: flex;
     justify-content: end;
-    flex-direction: row;
+}
+.container_main_actions_right .buttons_content_actions{
+    width: 25%;
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
 }
 .container_main_actions_right .buttons_content_actions .buttons{
     width: 150px;
     height: 6vh;
+    margin-bottom: 3px;
 }
 .container_main_actions_right .buttons_content_actions #search{
-    background-color: rgb(127,103,190);
-    color: #ffffff;
+    background-color: var(--boton_lila);
+    color: var(--color_texto_blanco);
     margin-right: 10px;
 }
 
 .container_main_actions_right .buttons_content_actions #unlock{
-    background-color: rgb(215,38,144);
-    color: #ffffff;
+    background-color: var(--boton_rosa);
+    color: var(--color_texto_blanco);
 }
   
 
@@ -87,17 +93,17 @@
     margin: 0 auto;
 }
 .mat-elevation-z8{
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    border: var(--borde_negro_20);
     box-shadow: none;
 }
 
 .container_table #state{
-    color: rgb(215,38,144);
+    color: var(--color_texto_rosa);
     font-weight: 700;
 }
 
 .loader_content{
-    background-color: rgba(0, 0, 0, 0.453);
+    background-color: var(--bg-black_45);
     width: 100vw;
     height: 100vh;
     position: absolute;
@@ -111,13 +117,13 @@ mat-paginator{
     background-color: transparent;
 }
 
-@media screen and (max-width:500px) {
+@media screen and (max-width:912px) {
     .main_container_bg{
         width: 100%;
         height: 93vh;
         position: relative;
         z-index: 2;
-        background-color: #ffffff;
+        background-color: var(--bg-blanco_100);
     }
 
     .container_main_actions{
@@ -133,6 +139,15 @@ mat-paginator{
     }
     .container_main_actions .container_main_actions_right{
         width: 100%;
+        display: flex;
+        justify-content: end;   
+    }
+
+    .container_main_actions_right .buttons_content_actions{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;        
     }
     .container_table{
         width: 100%;

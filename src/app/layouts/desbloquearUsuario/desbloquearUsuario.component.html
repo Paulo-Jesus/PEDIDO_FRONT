@@ -7,14 +7,18 @@
       <div class="container_main_actions">
         <div class="container_main_actions_left">
           <div class="container_name">
-            <p>Usuario</p>   
+            <p>Rol:</p>   
             <div class="container_form_button">      
               <mat-form-field appearance="outline" id="checkSelect">
                 <mat-label>Elija una opcion</mat-label>
                 <mat-select [ngModel]="selectedOption" (ngModelChange)="setSelection($event)"> 
-                  <mat-option>Elija una opcion</mat-option>             
-                  <mat-option *ngFor="let data of datosTabla" [value]="data.correo">{{data.correo}}</mat-option>
+                  <mat-option value="pInicial">Elija una opcion</mat-option>             
+                  <mat-option *ngFor="let data of datosTabla" [value]="data.nombreRol">{{data.nombreRol}}</mat-option>
                 </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="outline" id="checkSelect">
+                <mat-label>Correo electronico:</mat-label>
+                <input type="text" matInput #correo>
               </mat-form-field>
               <button mat-button class="buttons" id="clean" (click)="limpiarDatos()">
                 <i class="bi bi-trash"></i>              
@@ -24,7 +28,7 @@
         </div>
         <div class="container_main_actions_right">
           <div class="buttons_content_actions">
-            <button mat-button class="buttons" id="search" (click)="buscarUsuario()">
+            <button mat-button class="buttons" id="search" (click)="buscarUsuario(correo.value,correo)">
               Buscar
               <i class="bi bi-search"></i>
             </button>
