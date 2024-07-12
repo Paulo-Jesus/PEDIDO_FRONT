@@ -23,7 +23,7 @@ const routes: Routes = [
     children : [
       {path:'usuarios',                      component : Usuario_layoutComponent},
       {path:'desbloquear_usuario',           component : DesbloquearUsuarioComponent},
-      {path:'registrarRoles',                     component : VerRolesComponent},
+      {path:'registrarRoles',                component : VerRolesComponent},
     ]
   },
   {path:'home/pedidos',                      component : ProveedorComponent,
