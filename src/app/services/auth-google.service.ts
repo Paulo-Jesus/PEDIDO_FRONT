@@ -1,21 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
-import { jwtDecode } from 'jwt-decode';
 import { LoginService } from './login.service';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class AuthGoogleService {
-isLoggedIn: boolean = false;
-profileemail = "";
-entrar=false;
+  isLoggedIn: boolean = false;
+  profileemail = "";
+  entrar=false;
+  
   constructor(
+
     private oauthService: OAuthService,
-    private router:Router,
-    private _loginService:LoginService,
+    private router: Router,
+    private _loginService: LoginService,
+    private snackBar: MatSnackBar,
+    private cookieService:CookieService
   ) { 
     this.initLogin();
   }
@@ -37,6 +41,7 @@ entrar=false;
       });
     } 
   }
+
   checkAccessTokenValidity() {
     if (this.oauthService.hasValidAccessToken()) {
       this.isLoggedIn = true;
@@ -72,6 +77,7 @@ entrar=false;
   }
 
   Autoinicio() {
+    
     const profileemail = sessionStorage.getItem("profileemail");
     if (profileemail !== null ) {
       console.log("entro");
@@ -81,13 +87,23 @@ entrar=false;
       this._loginService.loginGoogle(loginDTO).subscribe(response =>{
         console.log("Datos correctos");
         
-        this.router.navigate(['/home/seguridad/usuarios']);
-        
+        this.cookieService.set('token',response.data.token,{
+          secure: true,
+          expires: new Date(Date.now()+360000),
+        });
+          this.router.navigate(['/home/seguridad']);
       }, error =>{
         console.log("Datos incorrectos",error);
+        this.mostrarMensajeError();
         sessionStorage.clear();
       });
     }
   }
 
+  mostrarMensajeError() {
+    const config = new MatSnackBarConfig();
+    config.duration = 4000;
+    this.snackBar.open('Gmail no Registrado', 'Cerrar', config);
+  }
+  
 }
