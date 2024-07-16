@@ -18,7 +18,7 @@
 }
 .main_container_bg .container_info .header_title_content h1{
     color: var(--boton_lila);
-    font-weight: 600;
+    font-weight: var(--fw-600);
     line-height: 7vh;
     text-align: center;
     width: 90%;
@@ -38,7 +38,7 @@
     width: 70%;
 }
 .container_main_actions .container_main_actions_left .container_name p{
-    font-weight: 600;
+    font-weight: var(--fw-600);
 }
 .container_form_button{
     display: flex;
@@ -62,12 +62,12 @@
 .container_main_actions .container_main_actions_right{
     width: 25%;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 .container_main_actions_right .buttons_content_actions{
     width: 25%;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     flex-direction: column;
 }
 .container_main_actions_right .buttons_content_actions .buttons{
@@ -99,7 +99,7 @@
 
 .container_table #state{
     color: var(--color_texto_rosa);
-    font-weight: 700;
+    font-weight: var(--fw-700);
 }
 
 .loader_content{
@@ -140,7 +140,7 @@ mat-paginator{
     .container_main_actions .container_main_actions_right{
         width: 100%;
         display: flex;
-        justify-content: end;   
+        justify-content: flex-end;   
     }
 
     .container_main_actions_right .buttons_content_actions{

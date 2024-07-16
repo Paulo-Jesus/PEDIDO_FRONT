@@ -18,7 +18,7 @@
     display: flex;
     justify-content: center;
     width: 120px;
-    background-color: rgb(103, 80, 164);
+    background-color: var(--boton_lila);
     border-radius: 5px;
     margin: auto;
   }
@@ -51,8 +51,8 @@
   
   .title {
     line-height: 10vh;
-    color: rgb(103, 80, 164);
-    font-weight: bold;
+    color: var(--color_texto_lila);
+    font-weight: var(--fw_bolder);
   }
   
   
@@ -62,7 +62,7 @@
   }
   
   .accent {
-    color: rgb(103, 80, 164);
+    color: var(--boton_lila_oscuro);
   }
   
   .container-table {

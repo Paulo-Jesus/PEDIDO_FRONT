@@ -31,10 +31,10 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     //*ngIf="validacionrol" colocar en linea 11 de html
-   // this.compararTokens();
+   //this.compararTokens();
    this.role = this.tokendecoder.obtainRol();
    console.log(this.role)
-   //this.validacionrol= this.role === 'uno' || this.role === 'Administrador';
+   this.validacionrol= this.role === '1' || this.role === 'Administrador';
 
   }
   

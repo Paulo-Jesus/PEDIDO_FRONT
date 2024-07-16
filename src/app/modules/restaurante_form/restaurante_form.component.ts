@@ -14,7 +14,7 @@ import { Env_Mensajes } from 'src/enviroments/Env_Mensajes';
 export class Restaurante_formComponent implements OnInit {
   selectedFile!: File;
   form: FormGroup;
-  load:boolean=false;
+  load:boolean=true;
   b64String!: string;
 
   constructor(
@@ -49,13 +49,13 @@ export class Restaurante_formComponent implements OnInit {
 
   onSubmit(){   
     const restaurante : IRestaurante={
-      ruc : this.form.value.ruc,
-      nombre : this.form.value.nombre,
-      correo : this.form.value.correo,
-      telefono : this.form.value.telefono,
+      ruc :       this.form.value.ruc,
+      nombre :    this.form.value.nombre,
+      correo :    this.form.value.correo,
+      telefono :  this.form.value.telefono,
       direccion : this.form.value.direccion,
-      logotipo : this.b64String,
-      contrasena : this.form.value.contrasena
+      logotipo :  this.b64String,
+      contrasena :this.form.value.contrasena
     };
     
     if(this.form.valid && this.b64String){

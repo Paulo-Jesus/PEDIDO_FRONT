@@ -18,7 +18,7 @@
     margin: 20px 0;
     text-align: center;
     line-height: 10vh;
-    color: rgb(103, 80, 164);
+    color: var(--color_texto_lila);
 }
 .nombre, .checkbox-container{
     display: flex;
@@ -54,11 +54,11 @@
 }
 
 .button-container{
-    background-color: rgb(103, 80, 164);
+    background-color: var(--boton_lila);
     border-radius: 3px;
 }
 .button-container-cancelar{
-    background-color: rgb(45, 55, 72);
+    background-color: var(--boton_lila_oscuro);
     border-radius: 3px;
 }
 .container-table{

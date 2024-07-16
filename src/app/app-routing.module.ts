@@ -31,6 +31,7 @@ const routes: Routes = [
       {path:'registrar_menu',                component : RegistroMenuComponent},
       {path:'pedido',                        component : PedidoComponent},
       {path:'consultarPedidos',              component : ConsultarPedidosComponent}
+      //{path:'historial_pedido'}
     ]
   },
   {path:'restaurantes/formulario_registro',  component : Restaurante_formComponent}

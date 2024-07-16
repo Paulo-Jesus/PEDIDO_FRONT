@@ -1,3 +1,4 @@
 npm install
 npm i angular-oauth2-oidc --save
-npm install ngx-cookie-service --save
+
+extraer el rar "cooki" y copiarlo a la carpeta node_modules

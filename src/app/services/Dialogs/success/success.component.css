@@ -1,7 +1,7 @@
 .container_message{
     width:100%;
     height: 100%;
-    background-color: #ffffff;
+    background-color: var(--bg_blanco_100);
     border-radius: 5px;
 }
 .container_data{
@@ -31,6 +31,6 @@
 .container_data .content_button .buttons{
     background-color: rgb(127,103,190);
     width: 100%;
-    color: #ffffff;
+    color: var(--bg_blanco_100);
 
 }

@@ -58,7 +58,7 @@
 .buttonForgot{
     background-color: none;
     font-size: 0.8rem;
-    color: rgb(127,103,190);
+    color: var(--boton_lila);
     margin-top: 10px;
 }
 

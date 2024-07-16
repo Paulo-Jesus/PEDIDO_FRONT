@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   @ViewChild('sidebar_container') sidebar_container! : SidebarComponent;
   constructor(private tokenService: TokenDecoderService,
               private dialogRef: Dialog
-            ) { }
+  ) { }
 
   ngOnInit() {
     this.NombreUsuario = this.tokenService.obtainName();

@@ -1,14 +1,14 @@
 .container_main_bg{
     width: 100%;
     height: 100%;
-    background-color: rgb(245, 245, 245);
+    background-color: var(--bg_blanco_100);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .container_main_bg .container_info{
-    background-color: #ffffff;
+    background-color: var(--bg_blanco_100);
     width: 90%;
     height: 90%;
     display: flex;
@@ -30,7 +30,7 @@
     height: auto;
     font-size: 2rem;
     text-align: center;
-    color: rgb(127,103,190);
+    color: var(--bg_lila_100);
 }
 
 .card{
@@ -40,7 +40,7 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    box-shadow: 0 0 20px  rgba(0, 0, 0, 0.333);
+    box-shadow: 0 0 20px  var(--borde_negro_33);
 }
 .card_image_content{
     height: 60%;
@@ -54,23 +54,23 @@
 }
 .card p{
     font-size: 1.4rem;
-    font-weight: bolder;
+    font-weight: var(--fw_bolder);
     padding: 8px 0;
     text-transform: uppercase;
     z-index: 2;
 }
 
 #search{
-    background-color: rgb(127,103,190);
-    color: #ffffff;
+    background-color: var(--boton_lila);
+    color: var(--color_texto_blanco);
     width: 70%;
     z-index: 2;
 }
 
 .loader_content{
     width: 100%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.1);
+    height: 100%;
+    background-color: var(--bg_negro_33);
     position: absolute;
     top: 0;
     left: 0;
@@ -97,7 +97,7 @@
         justify-content: center;
         align-items: center;
         overflow: hidden;
-        box-shadow: 0 0 5px  rgba(0, 0, 0, 0.333);
+        box-shadow: 0 0 5px  var(--borde_negro_33);;
         margin-bottom: 15px;
     }
     
@@ -116,6 +116,6 @@
         height: 30px;
         font-size: 2rem;
         text-align: center;
-        color: rgb(127,103,190);
+        color: var(--bg_lila_100)
     }
 }

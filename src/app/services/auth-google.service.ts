@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
 import { LoginService } from './login.service';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,7 @@ export class AuthGoogleService {
     private router: Router,
     private _loginService: LoginService,
     private snackBar: MatSnackBar,
+    private cookieService:CookieService,
   ) { 
     this.initLogin();
   }
@@ -75,6 +77,7 @@ export class AuthGoogleService {
   }
 
   Autoinicio() {
+    
     const profileemail = sessionStorage.getItem("profileemail");
     if (profileemail !== null ) {
       console.log("entro");
@@ -83,7 +86,12 @@ export class AuthGoogleService {
       
       this._loginService.loginGoogle(loginDTO).subscribe(response =>{
         console.log("Datos correctos");
-        this.router.navigate(['/home/seguridad/usuarios']);
+        
+        this.cookieService.set('token',response.data.token,{
+          secure: true,
+          expires: new Date(Date.now()+360000),
+        });
+          this.router.navigate(['/home/seguridad']);
       }, error =>{
         console.log("Datos incorrectos",error);
         this.mostrarMensajeError();

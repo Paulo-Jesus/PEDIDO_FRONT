@@ -5,7 +5,7 @@
     width: 20vw;
     height: 93vh;
     font-family: var(--letra_montserrat); 
-    position: absolute;
+    position: fixed;
 }
 
 .container_logo{
@@ -29,6 +29,7 @@
 
 .content_image img{
     width: 100px;
+    margin-bottom: 35%;
 }
 
 .content_item .buttons_content button{
@@ -62,7 +63,7 @@
     .sidebar_container{
         width: 0vw;
         height: 100vh;
-        font-family: "Montserrat", sans-serif; 
+        font-family: var(--letra_montserrat); 
         position: absolute;
         background-color: var(--bg_blanco_100);
         left: -50vw;
@@ -78,7 +79,7 @@
         width: 100%;
         height: 7vh;
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         align-items: center;
         opacity: 1;
     }

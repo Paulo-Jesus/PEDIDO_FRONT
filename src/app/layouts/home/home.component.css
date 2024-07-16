@@ -7,7 +7,7 @@
     flex-direction: row;
     width: 100vw;
     height: 100vh;
-    font-family: "Montserrat", sans-serif; 
+    font-family: var(--letra_montserrat); 
     overflow: hidden;
 }
 .body_left_container{
@@ -16,14 +16,14 @@
 }
 .body_right_container{
     width: 80vw;
-    height: 7vh;
+    height: 6vh;
 }
 
 .container_router_outlet{
     width: 80vw;
     height: 93vh;
     z-index: 1;
-    background-color: var(--bg_blanco_100);
+    background-color: rgb(245, 245, 245);
     position: absolute;
     right: 0;
     top: 5%;
