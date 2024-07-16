@@ -2,12 +2,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { Enviroment } from 'src/enviroments/enviroment';
 import { Injectable } from '@angular/core';
-import { Menu } from '../models/menu';
+import { Menu } from '../interfaces/Menu';
 @Injectable({
   providedIn: 'root'
 })
 export class MenuService {
-  private IngresarMenu: string = Enviroment.ApiIngresarMenu;
+  private IngresarMenu: string = Enviroment.endpoint;
   private ConsultaTieneMenu:string = Enviroment.ApiConsultaExisteMenu;
   private ObtenerMenu: string = Enviroment.ApiObtenerMenu;
 

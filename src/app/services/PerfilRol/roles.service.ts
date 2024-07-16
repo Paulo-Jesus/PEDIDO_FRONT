@@ -9,7 +9,7 @@ import { Enviroment } from 'src/enviroments/enviroment';
 })
 export class RolesService {
   private myAppUrl: string = Enviroment.endpoint;
-  private myApiUrl: string = 'api/Role/';
+  private myApiUrl: string = 'api/CrearPerfil/GetListRoles';
 
   constructor(private http:HttpClient) { }
 

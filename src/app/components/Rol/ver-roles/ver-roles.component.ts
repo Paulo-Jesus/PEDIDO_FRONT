@@ -26,8 +26,11 @@ export class VerRolesComponent implements OnInit{
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   
-  constructor(private roleService: RolesService, private estadoServices: EstadosService,
-    public dialog: MatDialog, private _snackBar: MatSnackBar) {}
+  constructor(
+          private roleService: RolesService, 
+          private estadoServices: EstadosService,
+          public dialog: MatDialog, 
+          private _snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.obtenerRoles();

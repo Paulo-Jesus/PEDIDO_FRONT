@@ -8,8 +8,8 @@ import { Enviroment } from 'src/enviroments/enviroment';
 })
 export class EstadosService {
 
-  private myAppUrl:string = Enviroment.endpoint;
-  private myApiUrl: string= 'api/Estados';
+  private myAppUrl: string = Enviroment.endpoint;
+  private myApiUrl: string= '/api/CrearPerfil/GetListEstados';
 
   constructor(private http:HttpClient) { }
   getEstado(): Observable<any> { 

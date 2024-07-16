@@ -17,6 +17,9 @@ export class SidebarComponent implements OnInit {
 
   role: string = '';
   validacionrol!: boolean;
+  validacionprove!: boolean;
+
+
   constructor(
     private router:Router, 
     private _loginService:LoginService,
@@ -30,11 +33,11 @@ export class SidebarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    //*ngIf="validacionrol" colocar en linea 11 de html
-   //this.compararTokens();
    this.role = this.tokendecoder.obtainRol();
    console.log(this.role)
-   this.validacionrol= this.role === '1' || this.role === 'Administrador';
+   
+   this.validacionrol= this.role === '1';
+   this.validacionprove= this.role === '3' ;
 
   }
   

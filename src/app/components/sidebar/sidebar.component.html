@@ -43,9 +43,9 @@
       </mat-expansion-panel-header>  
         
       <div class="buttons_content d-flex flex-column">
-        <button mat-button (click)="navigateToRegistroMenu()">Registrar Menú</button>
+        <button mat-button *ngIf="validacionprove || validacionrol " (click)="navigateToRegistroMenu()">Registrar Menú</button>
         <button mat-button (click)="navigateToPedido()">Pedidos</button>
-        <button mat-button (click)="navigateHistorialPedido()">Historial Pedidos</button>
+        <button mat-button *ngIf="validacionprove || validacionrol" (click)="navigateHistorialPedido()">Historial Pedidos</button>
       </div> 
     </mat-expansion-panel>
   </mat-accordion>
