@@ -44,5 +44,7 @@ export class PedidoComponent implements OnInit {
     return image;
   }
 
-  verMenu(){}
+  verMenu(){
+    
+  }
 }

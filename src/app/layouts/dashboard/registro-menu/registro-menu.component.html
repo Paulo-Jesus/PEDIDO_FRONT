@@ -1,85 +1,102 @@
 <div class="main_container_bg">
-    <div class="container_info">
-      <div class="container_header">
-        <div class="container_header_title">
-          <h1>Registro de Pedidos</h1>
-        </div>
-        <div class="container_buttons_actions">
-          
-          <form [formGroup]="form" class="form_content">
-            <div class="container_input_buttons">
-              <mat-form-field class="content_id" appearance="outline">
-                <label>Fecha:</label>
-                <input matInput type="text" [value]="todayDate" readonly  maxlength="10">
-              </mat-form-field>
-              <mat-form-field class="content_id" appearance="outline">
-                <label>Hora Inicio:</label>
-                <mat-select [(ngModel)]="selectedHoraI" name="hora" formControlName="horaI">
-                  <mat-option *ngFor="let hora of horas" [value]="hora.value">
-                    {{ hora.viewValue }}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-              <mat-form-field class="content_id" appearance="outline">
-                <label>Hora Fin:</label>
-                <mat-select [(ngModel)]="selectedHoraF" name="hora" formControlName="horaI">
-                  <mat-option *ngFor="let hora of horas" [value]="hora.value">
-                    {{ hora.viewValue }}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-  
-            <div class="container_buttons_subactions">
-          
-              <div class="container_buttons">
-                <button mat-button class="buttons" id="add" (click)="openDialogAgregar()">
-                  Agregar
-                  <i class="bi bi-plus"></i>          
-                </button>
-                <button mat-button class="buttons" (click)="Guardar()">
-                  Guardar
-                  <i class="bi bi-floppy"></i>          
-                </button>
-              </div>
-            </div>
-        </form>
-        </div>
+  <div class="container_info">
+    <div class="container_header">
+      <div class="container_header_title">
+        <h1>Registro de Pedidos</h1>
       </div>
-      <div class="container_table">
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-              
-          <ng-container matColumnDef="nombre" sticky>
-            <th mat-header-cell *matHeaderCellDef> Nombre </th>
-            <td mat-cell *matCellDef="let element">{{element.nombre}}</td>
-          </ng-container>
-          
-          <ng-container matColumnDef="categoria">
-            <th mat-header-cell *matHeaderCellDef> Categoria </th>
-            <td mat-cell *matCellDef="let element">{{element.categoria}}</td>
-          </ng-container>
-        
-          <ng-container matColumnDef="precio">
-            <th mat-header-cell *matHeaderCellDef> Precio </th>
-            <td mat-cell *matCellDef="let element" id="precio"> {{element.precio}} </td>
-          </ng-container>
+      <div class="container_buttons_actions">
 
-          <ng-container matColumnDef="opcion">
-            <th mat-header-cell *matHeaderCellDef> Opcion </th>
-            <td mat-cell *matCellDef="let element" id="state"> 
-              <button mat-button (click)="openDialogModificar(element.nombre,element.categoria,element.precio)">
-                <i class="bi bi-pencil-square"></i>
+        <form [formGroup]="form" class="form_content">
+          <div class="container_input_buttons">
+            <div>
+              <label>Fecha:</label>
+              <mat-form-field class="content_id" appearance="outline">
+                <input matInput type="text" [value]="todayDate" readonly maxlength="10">
+              </mat-form-field>
+            </div>
+            <mat-form-field class="content_id" appearance="outline">
+              <label>Hora Inicio:</label>
+              <mat-select [(ngModel)]="selectedHoraI" name="hora" formControlName="horaI">
+                <mat-option *ngFor="let hora of horas" [value]="hora.value">
+                  {{ hora.viewValue }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="content_id" appearance="outline">
+              <label>Hora Fin:</label>
+              <mat-select [(ngModel)]="selectedHoraF" name="hora" formControlName="horaI">
+                <mat-option *ngFor="let hora of horas" [value]="hora.value">
+                  {{ hora.viewValue }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="container_buttons_subactions">
+
+            <div class="container_buttons">
+              <button mat-button class="buttons" id="add" (click)="openDialogAgregar()">
+                Agregar
+                <i class="bi bi-plus"></i>
               </button>
-              <button mat-button (click)="Eliminar()">
-                <i class="bi bi-trash"></i>
+              <button mat-button class="buttons" (click)="Guardar()">
+                Guardar
+                <i class="bi bi-floppy"></i>
               </button>
-            </td>
-          </ng-container>
-        
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    
-        </table>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
+    <div class="container_table">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+        <!-- Checkbox Column -->
+        <ng-container matColumnDef="seleccion">
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+              [indeterminate]="selection.hasValue() && !isAllSelected()">
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+              [checked]="selection.isSelected(row)">
+            </mat-checkbox>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nombre" sticky>
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let producto">{{producto.nombre}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="categoria">
+          <th mat-header-cell *matHeaderCellDef> Categoria </th>
+          <td mat-cell *matCellDef="let producto">{{producto.categoria}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="precio">
+          <th mat-header-cell *matHeaderCellDef> Precio </th>
+          <td mat-cell *matCellDef="let producto" id="precio"> ${{producto.precio}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="opcion">
+          <th mat-header-cell *matHeaderCellDef> Opcion </th>
+          <td mat-cell *matCellDef="let producto" id="state">
+            <button mat-button (click)="openDialogModificar(producto)">
+              <i class="bi bi-pencil-square"></i>
+            </button>
+            <button mat-button (click)="Eliminar(producto.idProducto)">
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="10" showFirstLastButtons></mat-paginator>
+    </div>
   </div>
+</div>

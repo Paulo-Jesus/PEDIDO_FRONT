@@ -1,46 +1,59 @@
 <body>
-  <div class="titulo" >
-      <mat-card-title>Agregar Pedido</mat-card-title>
-  </div>  
+  <div class="titulo">
+    <mat-card-title>Agregar Pedido</mat-card-title>
+  </div>
   <ng-container>
-      <form [formGroup]="form">
-          <p> Nombre:</p>
-          <input type="hidden" formControlName="nombre">
-          <mat-form-field class="campos-field">
-              <input matInput placeholder="Nombre" formControlName="nombre">
-          </mat-form-field>
-          <p>Descripcción (Opcional):</p>
-          <mat-form-field class="campos-field">
-              <input matInput placeholder="Descripcción" formControlName="descripcción">
-          </mat-form-field>
-          <p> Categoria:</p>
-          <mat-form-field class="campos-field">
-              <mat-select [(ngModel)]="selectedValue" name="comida" formControlName="comida">
-                  <mat-option  *ngFor="let comida of comidas" [value]="comida.value">
-                    {{comida.viewValue}}
-                  </mat-option>
-              </mat-select>
-          </mat-form-field> 
-          <br>
-          <p> Precio:</p>
-          <mat-form-field class="campos-field">
-              <input matInput placeholder="Precio" formControlName="precio">
-          </mat-form-field>
-          <div class = "imagen">
-              <input type="file" accept=".jpg, .png"(change)="handleImageChange($event.target)">
-          </div>
-          <br>
-      </form>
-    
-  <div class="container_buttons_subactions">
+    <form [formGroup]="form">
+      <p>Nombre:</p>
+      <input type="hidden" formControlName="nombre" />
+      <mat-form-field class="campos-field">
+        <input matInput placeholder="Nombre" formControlName="nombre" />
+      </mat-form-field>
+      <p>Descripcción (Opcional):</p>
+      <mat-form-field class="campos-field">
+        <input
+          matInput
+          placeholder="Descripcción"
+          formControlName="descripcion"
+        />
+      </mat-form-field>
+      <p>Categoria:</p>
+      <mat-form-field class="campos-field">
+        <mat-select formControlName="categoria">
+          <mat-option *ngFor="let comida of comidas" [value]="comida.value">
+            {{ comida.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br />
+      <p>Precio:</p>
+      <mat-form-field class="campos-field">
+        <input matInput placeholder="Precio" formControlName="precio" />
+      </mat-form-field>
+      <div class="imagen">
+        <input
+          type="file"
+          accept=".jpg, .png"
+          (change)="handleImageChange($event)"
+        />
+      </div>
+      <br />
+    </form>
 
+    <div class="container_buttons_subactions">
       <div class="container_buttons">
-        <button mat-button class="buttons" id="add" (click)="Guardar()" color="#bbe0ff">
+        <button
+          mat-button
+          class="buttons"
+          id="add"
+          (click)="Guardar()"
+          color="#bbe0ff"
+        >
           Guardar
-          <i class="bi bi-floppy"></i>         
+          <i class="bi bi-floppy"></i>
         </button>
-        <button mat-button class="buttons" id="add"(click)="cancelar()">
-          Cancelar        
+        <button mat-button class="buttons" id="add" (click)="cancelar()">
+          Cancelar
         </button>
       </div>
     </div>

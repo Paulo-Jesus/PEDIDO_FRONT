@@ -15,11 +15,12 @@ export class ProductoService {
 
   obtenerProductos(id: number): Observable<Producto[]> {
     return this.http.get<any>(`${this.ObtenerProductos}/${id}`).pipe(
-      map(response => response.data as Producto[])  // Mapea la propiedad 'data' del JSON a un array de Productos
+      map(response => response.data)  // Mapea la propiedad 'data' del JSON a un array de Productos
     );
   }
 
   ingresarProducto(producto: Producto): Observable<any> {
+    console.log('Ingresar producto:', producto);
     return this.http.post<any>(`${this.IngresarProductos}`, producto);
   }
 
