@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { LoginService } from 'src/app/services/login.service';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap, tap } from 'rxjs';
 @Component({
   selector: 'app-restablecerClave',
   templateUrl: './restablecerClave.component.html',
@@ -9,14 +11,46 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class RestablecerClaveComponent implements OnInit {
 
   form! : FormGroup;
-  constructor(private fb:FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private _loginService: LoginService,
+    private activatedRoute: ActivatedRoute
+  ) {
     this.form = this.fb.group({
-      email : ['',Validators.required]
-    })
+      Temporal: ['', Validators.required],
+      Nueva: ['', Validators.required],
+    });
   }
-
   ngOnInit() {
+    this.activatedRoute.params
+    .pipe(
+      switchMap(({ token }) => this._loginService.comprobarToken(token)),
+      tap(console.log)
+    )
+    .subscribe(
+      (response) => {
+        console.log('Se queda');
+      },
+      (error) => {
+        console.log('Se va', error);
+      }
+    );
   }
 
-  generarClave(){}
+  generarClave(){
+    this.activatedRoute.params
+      .pipe(
+        switchMap(({ token }) => this._loginService.restablecerClave(token, this.form.value.Temporal, this.form.value.Nueva)),
+        tap(console.log)
+      )
+      .subscribe(
+        (response) => {
+          console.log('Contraseña restablecida');
+        },
+        (error) => {
+          console.log('Error al restablecer contraseña', error);
+        }
+      );
+  }
+  
 }

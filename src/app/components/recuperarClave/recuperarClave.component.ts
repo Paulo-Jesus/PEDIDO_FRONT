@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-recuperarClave',
@@ -9,7 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class RecuperarClaveComponent implements OnInit {
 
   form! : FormGroup;
-  constructor(private fb:FormBuilder) {
+  constructor(private fb:FormBuilder,private _loginService:LoginService) {
     this.form = this.fb.group({
       email : ['',Validators.required]
     })
@@ -19,6 +20,15 @@ export class RecuperarClaveComponent implements OnInit {
   }
 
   generarClave(){
+    console.log(this.form.value.Correo);
+    this._loginService.recuperarClave(this.form.value.Correo).subscribe(
+      (response) => {
+        console.log('Correo Enviado');
+      },
+      (error) => {
+        console.log('Correo no enviado', error);
+      }
+    );
 
   }
 }

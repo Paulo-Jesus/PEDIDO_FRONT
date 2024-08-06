@@ -1,35 +1,23 @@
 import { Dialog } from '@angular/cdk/dialog';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Usuario } from 'src/app/interfaces/Usuario';
-import { Role } from 'src/app/interfaces/role';
-import { Iestado } from 'src/app/interfaces/iestado';
+import { MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { UsuarioService } from 'src/app/services/Usuario.service';
-import { RolesService } from 'src/app/services/PerfilRol/roles.service';
-import { EstadosService } from 'src/app/services/PerfilRol/estados.service';
-
-import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 
 @Component({
-  selector: 'app-add-user',
-  templateUrl: './add-user.component.html',
-  styleUrls: ['./add-user.component.css']
+  selector: 'app-edit-user',
+  templateUrl: './edit-user.component.html',
+  styleUrls: ['./edit-user.component.css']
 })
-export class AddUserComponent implements OnInit {
+export class EditUserComponent {
 
   checked : boolean = false;
   form:FormGroup;
-  listaRoles:Role[]=[];
-  listaEstado: Iestado[]=[];
 
-
-  constructor( 
-    private _rolServicio:RolesService,
-    private _estadoServicio:EstadosService,
-
-    private _dialog:Dialog,
-    private fb:FormBuilder
+  constructor(
+    private fb:FormBuilder,
+    private _dialog:Dialog
   ) { 
     this.form = this.fb.group({
       identificacion: ['', [Validators.required, Validators.maxLength(10)]],
@@ -49,5 +37,6 @@ export class AddUserComponent implements OnInit {
   closeView(){
     this._dialog.closeAll();
   }
+
 
 }

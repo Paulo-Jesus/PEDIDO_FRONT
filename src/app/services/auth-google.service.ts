@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
 import { LoginService } from './login.service';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
-import { CookieService } from 'ngx-cookie-service';
+import { CookieService } from 'Cookie/ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'

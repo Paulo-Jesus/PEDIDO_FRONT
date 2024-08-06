@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
-import { CookieService } from 'ngx-cookie-service';
+import { CookieService } from 'Cookie/ngx-cookie-service';
 
 
 interface DecodedToken {

@@ -68,20 +68,6 @@
         height: 40px;
     }
 
-    .security{
-        width: 100%;
-        height: 75vh;
-        overflow-y: scroll;
-    }
-
-    .containers h3{
-        position: relative;
-        font-weight: var(--fw_bolder);
-        font-size: 1.2rem;
-        width: 90%;
-        margin: 0 auto;
-        padding: 10px 0;
-    }
     .containers_security{
         display: flex;
         flex-direction: row;

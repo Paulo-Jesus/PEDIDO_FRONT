@@ -3,7 +3,7 @@
 
 .sidebar_container{
     width: 20vw;
-    height: 93vh;
+    height: 100vh;
     font-family: var(--letra_montserrat); 
     position: fixed;
 }
@@ -34,6 +34,8 @@
 
 .content_item .buttons_content button{
     background-color: none;
+    align-items: start;
+    margin-right: auto;
     border-radius: 0;
 }
 
@@ -51,6 +53,7 @@
 .button_content button{
     width: 100%;
     margin: 0 auto;
+    margin-left: 20px;
     height: 50px;
     display: flex;
     justify-content: flex-start;
@@ -97,5 +100,6 @@
     .sidebar_container.active {
         width: 80vw;
         left: 0vw;
-    }
+  
+  }
 }

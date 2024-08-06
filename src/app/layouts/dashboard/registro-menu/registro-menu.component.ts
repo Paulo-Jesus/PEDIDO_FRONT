@@ -6,7 +6,8 @@ import { AgregarMenuComponent } from './agregar-menu/agregar-menu.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ModificarMenuComponent } from './modificar-menu/modificar-menu.component';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
-
+import { ProductoService } from 'src/app/services/producto.service';
+import { Producto } from 'src/app/interfaces/Producto';
 interface Hora {
   value: string;
   viewValue: string;
@@ -24,6 +25,10 @@ export class RegistroMenuComponent implements OnInit  {
   selectedOption!:string;
   todayDate: string;
   datosTabla:any;
+
+  formProducto: FormGroup;
+  datosProducto: Producto[]=[];
+  dataSourceProducto = new MatTableDataSource<Producto>(this.datosProducto);
   dataSource = new MatTableDataSource();
   displayedColumns: string[] = ['nombre', 'categoria', 'precio' , 'opcion'];
 
@@ -31,12 +36,21 @@ export class RegistroMenuComponent implements OnInit  {
   constructor(
     private fb: FormBuilder,
     private dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private _productoServicio: ProductoService
   ) { 
     this.todayDate = new Date().toLocaleDateString();
     this.form = this.fb.group({
       horaI:[''],
       horaF:[''],
+    });
+    this.formProducto= this.fb.group({
+      id: [''],
+      nombre: [''],
+      descripcion: [''],
+      categoria: [''],
+      precio: ['']
+      
     });
     //visualizacion de las horas desde las 00:00 hasta las 23:55
     for (let hora = 0; hora < 24; hora++) {
@@ -49,9 +63,21 @@ export class RegistroMenuComponent implements OnInit  {
     }
   }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.obtenerProductos(1)
   }
 
+  obtenerProductos(id:number){
+    this._productoServicio.obtenerProductos(id).subscribe({ next: (response) => {
+        if (response.code) {
+          this.dataSourceProducto.data = response.data;
+          console.log(response)
+        } else {
+          console.log('No se encontraron datos', 'Oops');
+        }
+      },
+
+    })
+  }
   openDialogAgregar() {
     this.dialog.open(AgregarMenuComponent, {
       width: '50vw',

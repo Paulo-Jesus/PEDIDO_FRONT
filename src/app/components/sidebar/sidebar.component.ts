@@ -5,7 +5,7 @@ import { AuthGoogleService } from 'src/app/services/auth-google.service';
 import { LoginService } from 'src/app/services/login.service';
 import { TokenDecoderService } from 'src/app/services/Token/token-decoder.service';
 import { AuthenticationService } from 'src/app/services/Token/authentication.service';
-import { CookieService } from 'ngx-cookie-service';
+import { CookieService } from 'Cookie/ngx-cookie-service';
 
 
 @Component({
@@ -91,6 +91,11 @@ export class SidebarComponent implements OnInit {
 
   navigateToRegistrarRol() {
     this.router.navigate(["home/seguridad/registrarRoles"]);
+    this.ocultarSideBar();
+  }
+
+  navigateToAsignarPerfil() {
+    this.router.navigate(["home/seguridad/asignarPerfil"]);
     this.ocultarSideBar();
   }
 

@@ -1,6 +1,5 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Dialog } from '@angular/cdk/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
@@ -8,17 +7,13 @@ import { Role } from 'src/app/interfaces/role';
 import { AddRolDialogComponent } from '../add-rol-dialog/add-rol-dialog.component';
 import { EstadosService } from 'src/app/services/PerfilRol/estados.service';
 import { RolesService } from 'src/app/services/PerfilRol/roles.service';
-import { UsuarioService } from 'src/app/services/Usuario.service';
-import { Usuario } from 'src/app/interfaces/Usuario';
-import { Iestado } from 'src/app/interfaces/iestado';
-import { FormGroup, FormBuilder} from '@angular/forms';
-@Component({
-  selector: 'app-ver-roles',
-  templateUrl: './ver-roles.component.html',
-  styleUrls: ['./ver-roles.component.css']
-})
-export class VerRolesComponent implements OnInit{
 
+@Component({
+  selector: 'app-asignar-roles',
+  templateUrl: './asignar-roles.component.html',
+  styleUrls: ['./asignar-roles.component.css']
+})
+export class AsignarRolesComponent implements OnInit{
   displayedColumns: string[] = ['perfil', 'estado'];
   listEstados: any[] = [];
   listPerfiles: string[] = [];

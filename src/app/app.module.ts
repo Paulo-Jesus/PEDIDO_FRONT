@@ -15,7 +15,8 @@ import { ProveedorComponent } from './layouts/proveedor/proveedor.component';
 import { PedidoComponent } from './components/pedido/pedido.component';
 import { RegistroMenuComponent } from './layouts/dashboard/registro-menu/registro-menu.component';
 import { AgregarMenuComponent } from './layouts/dashboard/registro-menu/agregar-menu/agregar-menu.component';
-
+import { AsignarRolesComponent } from './components/Rol/asignar-roles/asignar-roles.component';
+import { Menu1Component } from './components/menus/menu1/menu1.component';
 
 /*MATERIALS*/
 import { ReactiveFormsModule } from '@angular/forms';
@@ -50,6 +51,9 @@ import { EstadoPipe } from './Model/EstadoPipe';
 import { ConsultarPedidosComponent } from './components/pedidos/consultar-pedidos/consultar-pedidos.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { EditUserComponent } from './layouts/dashboard/usuario_layout/add-edit-search-usuario/edit-user/edit-user.component';
+
+
 
 @NgModule({
   declarations: [
@@ -74,7 +78,11 @@ import { MatNativeDateModule } from '@angular/material/core';
     AddRolDialogComponent,
     VerRolesComponent,
     EstadoPipe,
-    ConsultarPedidosComponent
+    ConsultarPedidosComponent,
+    EditUserComponent,
+    AsignarRolesComponent,
+    Menu1Component,
+    
   ],
   imports: [
     BrowserModule,

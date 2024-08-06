@@ -20,6 +20,7 @@ export class AddRolDialogComponent {
   ) {
     this.roleForm = this.fb.group({
       nombre: ['', Validators.required], 
+      id: ['', Validators.required], 
       estado: [true]
     });
   }
@@ -28,6 +29,7 @@ export class AddRolDialogComponent {
     const formValue = this.roleForm.value;
     const rol: Role = {
       nombre: formValue.nombre,
+      id:formValue.id,
       estado: formValue.estado ? 1 : 2 
     };
     if (formValue.nombre == null || formValue.nombre == '') {

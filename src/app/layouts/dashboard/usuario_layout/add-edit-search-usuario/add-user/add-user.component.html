@@ -27,7 +27,7 @@
           <div class="content_mail">
             <label>Correo:</label>
             <mat-form-field class="mff" appearance="outline">
-              <input type="text" maxlength="60" matInput formControlName="correo">
+              <input type="email" maxlength="60" matInput formControlName="correo">
             </mat-form-field>
           </div>
         </div>
@@ -56,25 +56,25 @@
         </div>
       </div>
 
-      <div class="security">
+      
+        <div class="containers">
         <h3>Seguridad</h3>
-        <div class="containers_security">
-          <div class="container_selected_button_profile">
+          <div class="container_selected_button">
             <label id="profile_label">Perfil:</label>
               <mat-select class="select" formControlName="opcionSecurity">
                 <mat-option value="opt1">Viamatica</mat-option>
                 <mat-option value="opt2">Empresa 2</mat-option>
               </mat-select>
-          </div>
+          </div> 
           <div class="active_profile">
             <label>Activo:</label>
-            <mat-checkbox class="example-margin" [(ngModel)]="checked" formControlName="checked"></mat-checkbox>   
+            <mat-checkbox class="example-margin" [(ngModel)]="checked" formControlName="checked"></mat-checkbox>  
           </div>
-        </div>
+
       </div>
       <div class="buttons_content">
-        <button mat-button class="buttons" id="save">Guardar</button>
-        <button mat-button class="buttons" id="cancel" (click)="closeView()">Cancelar</button>
+        <button mat-raised-button class="buttons" type="submit" id="save">Guardar</button>
+        <button mat-raised-button class="buttons" id="cancel" (click)="closeView()">Cancelar</button>
       </div>
     </form>
   </div>

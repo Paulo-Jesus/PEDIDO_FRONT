@@ -10,7 +10,7 @@ import { Enviroment } from 'src/enviroments/enviroment';
 })
 export class PedidosService {
   private myAppUrl = Enviroment.endpoint;
-  private myApiUrl = 'api/Pedidos';
+  private myApiUrl = '/Pedidos';
 
   constructor(private http: HttpClient) { }
 

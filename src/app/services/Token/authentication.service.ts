@@ -9,7 +9,7 @@ import { Enviroment } from 'src/enviroments/enviroment';
 export class AuthenticationService {
 
   myAppUrl = Enviroment.endpoint;
-  myApiUrl = "api/Token/CompararTokens";
+  myApiUrl = "/Token/CompararTokens";
 
   constructor(private http: HttpClient) { }
 

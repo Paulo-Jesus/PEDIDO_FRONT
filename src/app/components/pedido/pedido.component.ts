@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, importProvidersFrom, OnInit } from '@angular/core';
 import { IRestaurante } from 'src/app/interfaces/IRestaurante';
 import { RestauranteService } from 'src/app/services/restaurante.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pedido',
@@ -13,10 +15,17 @@ export class PedidoComponent implements OnInit {
   imgB64! : string;
   images: HTMLImageElement[] = [];
   load:boolean=true;
-
+  form: FormGroup
   constructor(
+    private fb: FormBuilder,
+    private router:Router, 
     private _restauranteService:RestauranteService
-  ) { }
+  ) { 
+    this.form= this.fb.group({
+      id: [''],
+      nombre: [''],  
+    });
+  }
 
   ngOnInit() {
     this.obtenerDatos();
@@ -34,6 +43,10 @@ export class PedidoComponent implements OnInit {
     })
   }
 
+
+  filtrar(){
+
+  }
   b64ToImage(imgB64:string, index:number){
     let image = new Image();
     image.onload = () =>{
@@ -44,5 +57,7 @@ export class PedidoComponent implements OnInit {
     return image;
   }
 
-  verMenu(){}
+  verMenu(){
+    this.router.navigate(["home/pedidos/menu1"]);
+  }
 }

@@ -69,11 +69,11 @@
 }
 
 .container_input_buttons .content_id{
-    width: 45%;
-    height: 50px;
+    width: 35%;
+    height: 40px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
 }
 
 .container_input_buttons .content_id label{
@@ -92,7 +92,7 @@
     padding: 10px 0;
     color: var(--bg-negro_45);
 }
-.select{
+/* .select{
     border: 1px solid var(--borde_negro_33);
     width: 80%;
     height: 40px;
@@ -100,7 +100,7 @@
     padding-right: 5px;
     padding-top: 5px;
     padding-left: 10px;
-}
+} */
 
 /*BOTONES*/
 .container_buttons{
@@ -112,7 +112,7 @@
 }
 
 .buttons{
-    width: 40%;
+    width: 50%;
     background-color: var(--boton_lila);
     color: var(--color_texto_blanco);
     font-weight: var(--fw-600);
