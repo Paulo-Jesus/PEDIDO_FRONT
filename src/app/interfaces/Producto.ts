@@ -7,5 +7,5 @@ export class Producto {
     IdCategoria?:number;
     IdProveedor?:number;
     IdEstado?:number;
-    ImagenBase64?: string;
+    Imagen?: string;
 }

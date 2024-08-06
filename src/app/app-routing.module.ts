@@ -24,13 +24,15 @@ const routes: Routes = [
       {path:'usuarios',                      component : Usuario_layoutComponent},
       {path:'desbloquear_usuario',           component : DesbloquearUsuarioComponent},
       {path:'registrarRoles',                component : VerRolesComponent},
+      //{path:'asignarPerfil',                 component : AsignarRolesComponent},
     ]
   },
   {path:'home/pedidos',                      component : ProveedorComponent,
     children : [
       {path:'registrar_menu',                component : RegistroMenuComponent},
       {path:'pedido',                        component : PedidoComponent},
-      {path:'consultarPedidos',              component : ConsultarPedidosComponent}
+      {path:'consultarPedidos',              component : ConsultarPedidosComponent},
+      //{path:'menu1',                         component: Menu1Component},
       //{path:'historial_pedido'}
     ]
   },

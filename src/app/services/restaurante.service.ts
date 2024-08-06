@@ -9,16 +9,21 @@ import { IRestaurante } from '../interfaces/IRestaurante';
 })
 export class RestauranteService {
 
+  private ApiRegistrar = Enviroment.ApiRegistrar;
+  private ApigetRestaurantes = Enviroment.ApigetRestaurantes;
+
   url = Enviroment.endpoint;
   constructor(private http:HttpClient) { }
 
   public registrarDatos(datos : IRestaurante):Observable<Object>{
-    const urlAPI = `${this.url}/registrar`;
+    const urlAPI = this.ApiRegistrar;
     return this.http.post(urlAPI,datos);
   }
 
   public obtenerDatos():Observable<any>{
-    const urlAPI = `${this.url}/getRestaurantes`
+    const urlAPI = this.ApigetRestaurantes;
     return this.http.get(urlAPI);
   }
+
+  
 }

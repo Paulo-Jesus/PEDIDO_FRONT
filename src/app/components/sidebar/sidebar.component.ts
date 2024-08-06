@@ -94,6 +94,11 @@ export class SidebarComponent implements OnInit {
     this.ocultarSideBar();
   }
 
+  navigateToAsignarPerfil() {
+    this.router.navigate(["home/seguridad/asignarPerfil"]);
+    this.ocultarSideBar();
+  }
+
   isActive = false;
 
   toggleSidebar() {

@@ -1,29 +1,23 @@
-<div class="main_container_bg">
+<div class="container">
 
-  <div class="container_info">
-    <div class="header_title_content">
+  <div class="titulo-busqueda center">
+    <div class="content-title">
       <h1 class="title">Creación de Perfiles</h1>
     </div>
 
-    <div class="container_table">   
-      <div class="container_main_actions">
-        <div class="container_main_actions_left">
-          <div class="container_name">
-          <p>Perfiles:<p>   
-           <div class="container_form_button ">
-             
-               <mat-form-field appearance="outline" class="filtro">
-                 <mat-label>Selecciona una opción</mat-label>
-                 <mat-select [(ngModel)]="selectedPerfil">
-               <mat-option *ngFor="let perfil of listPerfiles" [value]="perfil">
-                 {{ perfil }}
+    <div class="container-filter-button row">
+      <div class="filters">
+        <mat-form-field appearance="outline" class="filtro">
+          <mat-label>Perfiles</mat-label>
+          <mat-select [(ngModel)]="selectedPerfil">
+            <mat-option *ngFor="let perfil of listPerfiles" [value]="perfil">
+              {{ perfil }}
             </mat-option>
           </mat-select>
         </mat-form-field>
-      
-        <mat-label>Estado:</mat-label>
+
         <mat-form-field appearance="outline" class="filtro">
-          <mat-label>Selecciona una opción</mat-label>
+          <mat-label>Estado</mat-label>
           <mat-select [(ngModel)]="selectedEstado">
             <mat-option *ngFor="let item of listEstados" [value]="item.nombre">
               {{ item.nombre }}
@@ -32,22 +26,19 @@
         </mat-form-field>
 
       </div>
-    </div>
-  </div>
 
-    <div class="container_main_actions_right">
-      <div class="buttons_content_actions">
+      <div class="button-container row">
 
-        <button mat-fab extended class="buttons" (click)="applyFilter()">
+        <button mat-fab extended class="example-button-container" (click)="applyFilter()">
           Buscar <mat-icon>search</mat-icon>
         </button>
 
-        <button mat-fab extended class="buttons" (click)="openAddRoleDialog()">
+        <button mat-fab extended class="example-button-container" (click)="openAddRoleDialog()">
           Añadir <mat-icon>add</mat-icon>
         </button>
+      </div>
     </div>
   </div>
-</div>
 
 
   <div class="container-table">
@@ -72,7 +63,6 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   </div>
-</div>
 
 
 

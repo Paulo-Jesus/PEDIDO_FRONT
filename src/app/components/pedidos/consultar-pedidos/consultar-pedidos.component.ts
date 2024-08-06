@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import{saveAs} from 'file-saver';
 import * as XLSX from "xlsx";
-import { MatIconRegistry } from '@angular/material/icon';
-import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { Pedidos } from 'src/app/interfaces/Pedidos';
