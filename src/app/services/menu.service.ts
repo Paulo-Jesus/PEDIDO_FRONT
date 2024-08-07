@@ -7,9 +7,9 @@ import { Menu } from '../interfaces/Menu';
   providedIn: 'root'
 })
 export class MenuService {
-  private IngresarMenu: string = Enviroment.endpoint;
-  private ConsultaTieneMenu:string = Enviroment.ApiConsultaExisteMenu;
-  private ObtenerMenu: string = Enviroment.ApiObtenerMenu;
+  private IngresarMenu: string =      Enviroment.endpoint;
+  private ConsultaTieneMenu:string =  Enviroment.ApiConsultaExisteMenu;
+  private ObtenerMenu: string =       Enviroment.ApiObtenerMenu;
 
   constructor(private http: HttpClient) { }
 

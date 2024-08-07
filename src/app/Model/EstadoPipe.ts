@@ -8,3 +8,4 @@ export class EstadoPipe implements PipeTransform {
     return estado === 1? 'Activo' : 'Inactivo';
   }
 }
+

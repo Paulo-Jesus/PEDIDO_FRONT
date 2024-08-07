@@ -41,17 +41,18 @@ import { RecuperarClaveComponent } from './components/recuperarClave/recuperarCl
 import { RestablecerClaveComponent } from './components/restablecerClave/restablecerClave.component';
 import { Usuario_layoutComponent } from './layouts/dashboard/usuario_layout/usuario_layout.component';
 import { AddUserComponent } from './layouts/dashboard/usuario_layout/add-edit-search-usuario/add-user/add-user.component';
-import {MatCardModule} from '@angular/material/card'; 
-import {NgFor} from '@angular/common';
+import { MatCardModule } from '@angular/material/card'; 
+import { NgFor } from '@angular/common';
 import { ModificarMenuComponent } from './layouts/dashboard/registro-menu/modificar-menu/modificar-menu.component';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { AddRolDialogComponent } from './components/Rol/add-rol-dialog/add-rol-dialog.component';
 import { VerRolesComponent } from './components/Rol/ver-roles/ver-roles.component';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { EstadoPipe } from './Model/EstadoPipe';
 import { ConsultarPedidosComponent } from './components/pedidos/consultar-pedidos/consultar-pedidos.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { FechaPipe } from './Model/fechaPipe';
 
 
 
@@ -78,6 +79,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     AddRolDialogComponent,
     VerRolesComponent,
     EstadoPipe,
+    FechaPipe,
     ConsultarPedidosComponent,
     EditUserComponent,
     AsignarRolesComponent,

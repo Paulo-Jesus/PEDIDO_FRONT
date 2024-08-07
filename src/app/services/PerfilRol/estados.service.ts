@@ -8,11 +8,10 @@ import { Enviroment } from 'src/enviroments/enviroment';
 })
 export class EstadosService {
 
-  private myAppUrl: string = Enviroment.endpoint;
-  private myApiUrl: string= '/CrearPerfil/GetListEstados';
+  private ObtenerListaEstado =   Enviroment.ApiObtenerListaEstado;
 
   constructor(private http:HttpClient) { }
   getEstado(): Observable<any> { 
-    return this.http.get<any>(`${this.myAppUrl}${this.myApiUrl}`);
+    return this.http.get<any>(`${this.ObtenerListaEstado}`);
   }
 }

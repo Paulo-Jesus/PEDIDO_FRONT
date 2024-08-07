@@ -10,11 +10,11 @@ import { LoginDTO } from '../interfaces/LoginDTO';
 })
 export class LoginService {
   ApiUrl = Enviroment.endpoint;
-  IniciarSesion         = "/Login/IniciarSesion";
-  IniciarSesionGoogle   = "/Login/IniciarSesionGoogle";
-  RecuperarClave        = "/Login/GenerarContrasena";
-  ComprobarToken        = "/Login/ComprobarToken";
-  RestablecerContrasena = "/Login/RestablecerContrasena";
+  IniciarSesion         = "/api/Login/IniciarSesion";
+  IniciarSesionGoogle   = "/api/Login/IniciarSesionGoogle";
+  RecuperarClave        = "/api/Login/GenerarContrasena";
+  ComprobarToken        = "/api/Login/ComprobarToken";
+  RestablecerContrasena = "/api/Login/RestablecerContrasena";
   
 
 constructor(private http:HttpClient, private router:Router ) { }

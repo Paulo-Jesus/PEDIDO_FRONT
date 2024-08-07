@@ -21,3 +21,8 @@ export interface ResponseApiProducto {
     message:string,
     data: Producto[],
     }
+
+    export interface ResponseApiPedido {
+        code:boolean,
+        message:string,
+        }

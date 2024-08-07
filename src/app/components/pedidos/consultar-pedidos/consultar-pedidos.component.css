@@ -70,12 +70,14 @@
   
   .container-table {
     margin: 25px 0;
+    
   }
   
   .container-table {
     align-items: center;
     height: 100%;
-    width: 100%;
+    width: 97%;
+    margin-left: 1%;
     max-width: 100%;
     box-shadow: 5px 5px 5px #c7c7c7;
   }

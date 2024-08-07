@@ -9,8 +9,8 @@ import { IRestaurante } from '../interfaces/IRestaurante';
 })
 export class RestauranteService {
 
-  private ApiRegistrar = Enviroment.ApiRegistrar;
-  private ApigetRestaurantes = Enviroment.ApigetRestaurantes;
+  private ApiRegistrar =          Enviroment.ApiRegistrar;
+  private ApigetRestaurantes =    Enviroment.ApigetRestaurantes;
 
   url = Enviroment.endpoint;
   constructor(private http:HttpClient) { }

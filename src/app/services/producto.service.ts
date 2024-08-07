@@ -8,9 +8,9 @@ import { ResponseApi, ResponseApiProducto } from '../interfaces/response';
   providedIn: 'root'
 })
 export class ProductoService {
-  private ObtenerProductos = Enviroment.ApiProductoObtener;
-  private IngresarProductos = Enviroment.ApiProductoIngresar;
-  private EstadoProducto = Enviroment.ApiProductoEstado;
+  private ObtenerProductos =      Enviroment.ApiProductoObtener;
+  private IngresarProductos =     Enviroment.ApiProductoIngresar;
+  private EstadoProducto =        Enviroment.ApiProductoEstado;
 
   constructor(private http: HttpClient) { }
 

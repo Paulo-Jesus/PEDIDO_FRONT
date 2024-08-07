@@ -1,19 +1,32 @@
+//HOST SWAGGER 
+const endpoint = "http://localhost:5092";
+
 export const Enviroment = {
-    production : false,
-    endpoint : "http://localhost:5092/api", //HOST SWAGGER 
+    production : false, 
+    //HOST SWAGGER 
+    endpoint : "http://localhost:5092",
+    
     
     // Producto
-    ApiProductoObtener: "http://localhost:5092/api/Productos/Obtener",
-    ApiProductoIngresar: "http://localhost:5092/api/Productos/Ingresar",
-    ApiProductoEstado: "http://localhost:5092/api/Productos/Estado",
+    ApiProductoObtener:         `${endpoint}/api/Productos/Obtener`,
+    ApiProductoIngresar:        `${endpoint}/api/Productos/Ingresar`,
+    ApiProductoEstado:          `${endpoint}/api/Productos/Estado`,
     // MENU
-    ApiIngresarMenu: "http://localhost:5092/api/Menu/Menu/Ingresar",
-    ApiConsultaExisteMenu: "http://localhost:5092/api/Menu/TieneMenu",
-    ApiObtenerMenu: "http://localhost:5092/api/Menu/DatosMenu",
+    ApiIngresarMenu:            `${endpoint}/api/Menu/Menu/Ingresar`,
+    ApiConsultaExisteMenu:      `${endpoint}/api/Menu/TieneMenu`,
+    ApiObtenerMenu:             `${endpoint}/api/Menu/DatosMenu`,
     //restaurante
-    ApigetRestaurantes: "http://localhost:5092/getRestaurantes",
-    ApiRegistrar:"http://localhost:5092/registrar",
+    ApigetRestaurantes:         `${endpoint}/getRestaurantes`,
+    ApiRegistrar:               `${endpoint}/registrar`,
     //desbloquearusuarios
-    ApiUsuariosBloqueados:"http://localhost:5092/UsuariosBloqueados",
-    
+    ApiUsuariosBloqueados:      `${endpoint}/api/UsuariosBloqueados`,
+    //pedidos
+    ApiObtenerPedidos:          `${endpoint}/api/HistorialPedidos/ObtenerPedidos`,
+    ApiPedidoInsertar:          `${endpoint}/api/Pedidos/InsertarPedido`,
+    //estado
+    ApiObtenerListaEstado:      `${endpoint}/api/CrearPerfil/GetListEstados`,
+    //roles
+    ApiGetRoles:                `${endpoint}/api/CrearPerfil/GetListRoles`,
+    //Token
+    ApiCompararToker:           `${endpoint}/api/Token/CompararTokens`,
 }

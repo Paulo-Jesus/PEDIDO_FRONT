@@ -10,20 +10,20 @@ import { Enviroment } from 'src/enviroments/enviroment';
 export class RolesService {
   private myAppUrl: string = Enviroment.endpoint;
   private myApiUrl: string = '/CrearPerfil/GetListRoles';
+  private ObtenerListaRoles =   Enviroment.ApiGetRoles;
 
   constructor(private http:HttpClient) { }
 
   getRoles(): Observable<any> { 
-    return this.http.get(`${this.myAppUrl}${this.myApiUrl}`);
+    return this.http.get(`${this.ObtenerListaRoles}`);
   }
 
-
   updateRol(role: Role): Observable<any> {
-    return this.http.put(`${this.myAppUrl}${this.myApiUrl}`, role);
+    return this.http.put(`${this.ObtenerListaRoles}`, role);
   }
 
   addRol(role: Role): Observable<any> {
-    return this.http.post(`${this.myAppUrl}${this.myApiUrl}`, role);
+    return this.http.post(`${this.ObtenerListaRoles}`, role);
   }
 
 }

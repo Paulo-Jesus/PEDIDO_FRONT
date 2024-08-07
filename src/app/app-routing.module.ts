@@ -38,8 +38,8 @@ const routes: Routes = [
   },
   {path:'restaurantes/formulario_registro',  component : Restaurante_formComponent}
   /*,
-  {path:'home/reportes'},
-  {path:'home/parametros'},
+  {path:'reportes'},
+  {path:'parametros'},
   */
 ];
 

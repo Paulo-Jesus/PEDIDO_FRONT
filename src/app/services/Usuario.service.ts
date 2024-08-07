@@ -10,7 +10,7 @@ import { Usuario, UsuarioEditar } from '../interfaces/Usuario';
 })
 export class UsuarioService {
 
-  url = Enviroment.endpoint;
+  url = Enviroment.endpoint+"/api";
 
   constructor(private http:HttpClient) { }
 
