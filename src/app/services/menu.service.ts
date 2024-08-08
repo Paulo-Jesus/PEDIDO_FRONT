@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { Enviroment } from 'src/enviroments/enviroment';
 import { Injectable } from '@angular/core';
-import { Menu } from '../interfaces/Menu';
+import { Menu } from '../Interfaces/Menu';
 @Injectable({
   providedIn: 'root'
 })

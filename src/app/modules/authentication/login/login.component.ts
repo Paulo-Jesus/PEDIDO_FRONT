@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginDTO } from 'src/app/interfaces/LoginDTO';
+import { LoginDTO } from 'src/app/Interfaces/LoginDTO';
 import { LoginService } from 'src/app/services/login.service';
 import { AuthGoogleService } from '../../../services/auth-google.service';
 import { CookieService } from 'Cookie/ngx-cookie-service';

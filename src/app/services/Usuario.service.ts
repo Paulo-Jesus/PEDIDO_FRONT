@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Enviroment } from 'src/enviroments/enviroment';
-import { ResponseApi, ResponseApiUsuario } from '../interfaces/response';
-import { Usuario, UsuarioEditar } from '../interfaces/Usuario';
+import { ResponseApi, ResponseApiUsuario } from '../Interfaces/response';
+import { Usuario, UsuarioEditar } from '../Interfaces/Usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,7 @@ export class UsuarioService {
   }
   public AgregarUsuarios(request:Usuario):Observable<ResponseApiUsuario>{
     const urlApi = `${this.url}/Usuarios/Agregar`
-    return this.http.get<ResponseApiUsuario>(urlApi);
+    return this.http.post<ResponseApiUsuario>(urlApi, request);
   }
   public EditarUsuarios(request:UsuarioEditar):Observable<ResponseApiUsuario>{
     const urlApi = `${this.url}/Usuarios/Editar`

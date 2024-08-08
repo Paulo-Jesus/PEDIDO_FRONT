@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { IRestaurante } from 'src/app/interfaces/IRestaurante';
+import { IRestaurante } from 'src/app/Interfaces/IRestaurante';
 import { RestauranteService } from 'src/app/services/restaurante.service';
 import { Env_Mensajes } from 'src/enviroments/Env_Mensajes';
 

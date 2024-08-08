@@ -1,0 +1,82 @@
+<div class="main_container_bg">
+
+  <div class="container_info">
+    <div class="header_title_content">
+      <h1 class="title">Creación de Perfiles</h1>
+    </div>
+
+    <div class="container_table">   
+      <div class="container_main_actions">
+        <div class="container_main_actions_left">
+          <div class="container_name">
+            <div class="content_element">
+              <p>Perfiles:<p>   
+              <div class="container_form_button ">           
+                <mat-form-field appearance="outline" class="filtro">
+                  <mat-label>Selecciona una opción</mat-label>
+                  <mat-select [(ngModel)]="selectedPerfil">
+                    <mat-option *ngFor="let perfil of listPerfiles" [value]="perfil">
+                      {{ perfil }}
+                      </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>   
+            </div> 
+            <div class="content_element">
+              <p>Estado:</p>
+              <mat-form-field appearance="outline" class="filtro">
+                <mat-label>Selecciona una opción</mat-label>
+                <mat-select [(ngModel)]="selectedEstado">
+                  <mat-option *ngFor="let item of listEstados" [value]="item.nombre">
+                    {{ item.nombre }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container_main_actions_right">
+        <div class="buttons_content_actions">
+          <button mat-fab extended class="buttons" id="search"(click)="applyFilter()">
+            Buscar <mat-icon>search</mat-icon>
+          </button>
+          <button mat-fab extended class="buttons" id="add" (click)="openAddRoleDialog()">
+            Añadir <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+  <div class="container-table">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="perfil">
+        <th mat-header-cell *matHeaderCellDef> Perfil </th>
+        <td mat-cell *matCellDef="let element"> {{ element.nombre }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="estado">
+        <th mat-header-cell *matHeaderCellDef> Estado </th>
+        <td mat-cell *matCellDef="let element">
+
+          {{ element.estado | estadoPipe }}
+          <mat-slide-toggle class="toggle" [checked]="element.estado === 1" (change)="toggleEstado(element)"
+            [color]="'blue'">
+          </mat-slide-toggle>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>
+
+
+
+
+</div>
+<!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of Perfiles">
+</mat-paginator> -->

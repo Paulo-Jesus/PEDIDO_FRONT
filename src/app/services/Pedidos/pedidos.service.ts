@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { Pedidos } from 'src/app/interfaces/Pedidos';
+import { Pedidos } from 'src/app/Interfaces/Pedidos';
 import { Enviroment } from 'src/enviroments/enviroment';
 
 

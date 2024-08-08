@@ -1,0 +1,40 @@
+<div class="container_main_bg">
+    <div class="container_info">
+      <div class="container_header">
+      <div class="content-title">
+      <h1>Pedido de almuerzo</h1>
+        </div>
+    </div>
+     <!-- <pre>{{datosProducto | json}}</pre> -->
+     <div class="container_main_actions">
+
+      
+     <div class="container_left col-md-4 col">
+      <div class="container_cards">
+        <div class="card" *ngFor="let item of datosProducto; let i=index">
+          
+            <div class="card_image_content">
+              <img [src]="'data:image/png;base64,' + item.imagenBase64" alt="item.nombre">
+              <!-- <img  id=" image-container" *ngFor="let image of images; let i = index" [src]="image" [alt]="'Imagen ' + i"> -->
+              <!-- <div [innerHTML]="b64ToImage(item.imagenBase64, i)"></div> -->
+               <!-- {{b64ToImage(item.imagenBase64, i) | json}} -->
+              <!-- <img  [src]="item.imagenBase64" [alt]="item.nombre"> -->
+              </div>
+              <p>{{item.nombre}}</p>
+              <p>{{item.precio}}</p>
+               <button mat-button class="buttons" id="search">
+                 Agregar +
+               </button>
+           </div>
+      </div>
+        </div>
+        <div class="container_right col-sm-5 col-lg-4 order-md-last">
+          <h3 class="d-flex mb-3">Tu Pedido</h3>
+      </div>
+      </div>
+    </div>
+  
+  <div class="loader_content" *ngIf="load">
+    <app-loader ></app-loader>
+  </div>
+</div>
