@@ -52,6 +52,7 @@ import { EstadoPipe } from './Model/EstadoPipe';
 import { ConsultarPedidosComponent } from './components/Pedidos/Historial-de-Pedidos/consultar-pedidos.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { TableComponent } from './components/Utilities/table/table.component';
 
 
 
@@ -83,6 +84,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     EditUserComponent,
     AsignarRolesComponent,
     Menu1Component,
+    TableComponent,
     
   ],
   imports: [

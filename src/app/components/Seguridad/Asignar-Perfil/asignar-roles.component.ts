@@ -19,6 +19,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class AsignarRolesComponent implements OnInit{
 
+  form:FormGroup;
   listEstados: any[] = [];
   listPerfiles: string[] = [];
   allRoles: Role[] = [];
@@ -28,11 +29,11 @@ export class AsignarRolesComponent implements OnInit{
 
   pageSize: number = 0;
 
-  form:FormGroup;
+
   selectedOption!:string;
   datosTabla: Usuario[]= [];
  
-  displayedColumns: string[] = ['action', 'identificacion', 'nombre', 'telefono' ,'correo','estado'];
+  displayedColumns: string[] = ['action', 'identificacion', 'Perfil', 'telefono' ,'correo','estado'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(

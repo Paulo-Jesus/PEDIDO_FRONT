@@ -19,21 +19,18 @@ export class Menu1Component implements OnInit {
   load: boolean = false;
 
   datosProducto: Producto[] = [];
+  datosListadoProducto: Producto[] = [];
   dataSourceProducto = new MatTableDataSource<Producto>(this.datosProducto);
+  dataSourceListadoProducto = new MatTableDataSource<Producto>(this.datosListadoProducto);
   formProducto: FormGroup
+  formListadoProducto:FormGroup
   constructor(
     private fb: FormBuilder,
     private _restauranteService: RestauranteService,
     private _productoServicio: ProductoService
   ) {
-    this.formProducto = this.fb.group({
-      id: [''],
-      nombre: [''],
-      descripcion: [''],
-      categoria: [''],
-      precio: [''],
-      imagen: ['']
-    });
+    this.formProducto =this.createForm()
+    this.formListadoProducto=this.createForm()
   }
 
   ngOnInit() {
@@ -57,6 +54,35 @@ export class Menu1Component implements OnInit {
     })
   }
 
+  ingresarProductos(producto: Producto) {
+    this._productoServicio.ingresarProducto(producto).subscribe({
+      next: (response) => {
+        if (response.code) {
+          this.datosListadoProducto = response.data;
+          this.dataSourceProducto.data = this.datosListadoProducto;
+          console.log(response)
+        } else {
+          console.log('No se encontraron datos', 'Oops');
+        }
+      },
+
+    })
+
+    
+  }
+
+  createForm(){
+    return this.fb.group({
+      id: [''],
+      nombre: [''],
+      descripcion: [''],
+      categoria: [''],
+      precio: [''],
+      imagen: ['']
+
+    })
+  }
+
   public obtenerDatos() {
     this.load = true;
     this._productoServicio.obtenerProductos(1).subscribe(response => {
@@ -74,12 +100,6 @@ export class Menu1Component implements OnInit {
     })
   }
 
-
-  filtrar() {
-    
-
-  }
-  
   b64ToImage(imgB64: string, index: number) {
     let image = new Image();
     image.onload = () => {
@@ -96,5 +116,25 @@ export class Menu1Component implements OnInit {
 
   }
 
-  verMenu() { }
+
+  addToMenu(){
+    const valueForm: Producto = this.formListadoProducto.value
+    
+    if(this.datosListadoProducto==null){
+      this._productoServicio.ingresarProducto(valueForm).subscribe
+      ({
+        next: (data) => {
+          if (data.code) {
+            this.formProducto.reset();
+          } else {
+            console.log("No se agrego el producto")
+          }
+        },
+        error: (e) => { }
+      });
+    }
+
+  }
+
+
 }

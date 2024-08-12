@@ -16,6 +16,7 @@ import { CookieService } from 'Cookie/ngx-cookie-service';
 export class SidebarComponent implements OnInit {
 
   role: string = '';
+
   validacionrol!: boolean;
   validacionprove!: boolean;
 
@@ -23,17 +24,17 @@ export class SidebarComponent implements OnInit {
   constructor(
     private router:Router, 
     private _loginService:LoginService,
-    private dialog:Dialog,
-    private authGoogleService: AuthGoogleService,
-    private tokendecoder :TokenDecoderService,
-    private cookieService: CookieService,
-    private tokenValidator: AuthenticationService, 
+    private _dialog:Dialog,
+    private _authGoogleService: AuthGoogleService,
+    private _tokendecoder :TokenDecoderService,
+    private _cookieService: CookieService,
+    private _tokenValidator: AuthenticationService, 
     
 
   ) { }
 
   ngOnInit() {
-   this.role = this.tokendecoder.obtainRol();
+   this.role = this._tokendecoder.obtainRol();
    console.log(this.role)
    
    this.validacionrol= this.role === '1';
@@ -42,9 +43,9 @@ export class SidebarComponent implements OnInit {
   }
   
   compararTokens() {
-    const tokenFrontend = this.cookieService.get('token');
+    const tokenFrontend = this._cookieService.get('token');
 
-    this.tokenValidator.compararTokens(tokenFrontend).subscribe(
+    this._tokenValidator.compararTokens(tokenFrontend).subscribe(
       (resultado: boolean) => { 
         if (resultado) {
           console.log('Los tokens son iguales');
@@ -55,14 +56,14 @@ export class SidebarComponent implements OnInit {
   }
 
   logout(){
-    this.authGoogleService.logout();
+    this._authGoogleService.logout();
     this._loginService.logout();
     sessionStorage.clear();
     this.ocultarSideBar();
   }
 
   ocultarSideBar(){
-    this.dialog.closeAll();
+    this._dialog.closeAll();
   }
 
   navigateToUsers(){

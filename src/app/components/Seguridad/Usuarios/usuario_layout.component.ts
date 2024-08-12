@@ -1,6 +1,6 @@
 
 import { Component, OnInit,AfterViewInit,ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { AddUserComponent } from '../../Modales/Modal-Usuario/add-user/add-user.component';
@@ -21,6 +21,10 @@ export class Usuario_layoutComponent implements OnInit,AfterViewInit {
   datosTabla: Usuario[]= [];
   dataSource = new MatTableDataSource<Usuario>(this.datosTabla);
   displayedColumns: string[] = ['action', 'identificacion', 'nombre', 'telefono' ,'correo','estado'];
+  
+  length! : number;
+  load:boolean=false;
+
   @ViewChild(MatPaginator) paginacionTabla!: MatPaginator
 
   constructor(
@@ -28,15 +32,28 @@ export class Usuario_layoutComponent implements OnInit,AfterViewInit {
     private dialog: MatDialog,
     private _usuarioServicio: UsuarioService
   ) { 
-    this.form = this.fb.group({
-      identificacion: [''],
-      nombre: [''],
-      opcion: ['']
+    this.form = this.createForm();
+  }
+
+  createForm(){
+    return this.fb.group({
+      idUsuario:      [0],
+      cedula:         ['', [Validators.required, Validators.maxLength(10)]],
+      nombre:         ['', [Validators.required, Validators.maxLength(50)]],
+      correo:         ['', [Validators.required, Validators.email, Validators.maxLength(60)]],
+      telefono:       ['', [Validators.required, Validators.maxLength(10)]],
+      direccion:      ['', [Validators.required, Validators.maxLength(70)]],
+      idRol:          ['', Validators.required],
+      idEmpresa:      ['', Validators.required],
+      idEstado:       [false, Validators.required],
+      idCuenta:       [0]
     });
   }
 
+
   ngOnInit() {
     this.obtenerDatos();
+    this.length = this.datosTabla.length;
   }
   ngAfterViewInit(): void {
     this.dataSource.paginator=this.paginacionTabla;
@@ -46,6 +63,8 @@ export class Usuario_layoutComponent implements OnInit,AfterViewInit {
     this._usuarioServicio.obtenerTodosUsuarios().subscribe({ next: (response) => {
       if (response.code) {
         this.dataSource.data = response.data;
+        
+        
         console.log(response)
       } else {
         console.log('No se encontraron datos', 'Oops');
@@ -58,6 +77,26 @@ export class Usuario_layoutComponent implements OnInit,AfterViewInit {
   }
 
   
+  mostrarRol(id:number){
+    switch(id){
+      case id=1:
+         return "Activo";
+         break;
+      case id=2:
+        return "Inactivo";
+        break;
+      case id=3:
+        return "Bloqueado";
+        break;
+        default:
+        return "No hay rol";
+        break;
+        
+      
+ 
+    }
+
+  }
 
   rowSelect(element:any){
     /*

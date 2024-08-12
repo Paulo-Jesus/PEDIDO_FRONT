@@ -1,5 +1,5 @@
 import { Dialog } from '@angular/cdk/dialog';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
@@ -16,7 +16,7 @@ import { Env_Rutas } from 'src/enviroments/Env_Rutas';
   templateUrl: './desbloquearUsuario.component.html',
   styleUrls: ['./desbloquearUsuario.component.css']
 })
-export class DesbloquearUsuarioComponent implements OnInit {
+export class DesbloquearUsuarioComponent implements OnInit,AfterViewInit {
 
   selectedOption : string ="";
   horizontalPosition: MatSnackBarHorizontalPosition = 'start';
@@ -55,6 +55,9 @@ export class DesbloquearUsuarioComponent implements OnInit {
       this.length = this.datosTabla.length;
   }
 
+  ngAfterViewInit(): void {
+    this.dataSource.paginator=this.paginator;
+  }
   obtenerDatos(){
     this._usuarioService.obtenerTodos().subscribe((response: any)=>{
       this.datosTabla = response.response.data;
