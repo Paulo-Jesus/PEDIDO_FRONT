@@ -1,28 +1,22 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import{saveAs} from 'file-saver';
-import * as XLSX from "xlsx";
-import { MatIconRegistry } from '@angular/material/icon';
-import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
-import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { Pedidos } from 'src/app/Interfaces/Pedidos';
-import { PedidosService } from 'src/app/services/Pedidos/pedidos.service';
 import { MatSort } from '@angular/material/sort';
-import { TokenDecoderService } from 'src/app/services/Token/token-decoder.service';
+import { MatTableDataSource } from '@angular/material/table';
+import * as saveAs from 'file-saver';
+import { Pedidos } from 'src/app/Interfaces/Pedidos';
 import { TableColumn } from 'src/app/Interfaces/tableContent';
-
+import { PedidosService } from 'src/app/services/Pedidos/pedidos.service';
+import { TokenDecoderService } from 'src/app/services/Token/token-decoder.service';
+import * as XLSX from "xlsx";
 
 @Component({
-  selector: 'app-consultar-pedidos',
-  templateUrl: './consultar-pedidos.component.html',
-  styleUrls: ['./consultar-pedidos.component.css']
+  selector: 'app-reportes',
+  templateUrl: './reportes.component.html',
+  styleUrls: ['./reportes.component.css']
 })
-export class ConsultarPedidosComponent implements OnInit, AfterViewInit {
+export class ReportesComponent implements OnInit,AfterViewInit{
 
-  startDate: string = '';
-  endDate: string = '';
-  rol: string | undefined;
-  Id: any;
+  // displayedColumns: TableContent[] = ['fecha de Pedido', 'nombreUsuario', 'nombrePedido', 'precioProducto', 'cantidad'];
   tableData: Array<Pedidos> = [];
   tableColumns: Array<TableColumn> =[
     { title:'Fecha de Pedido', nameProperty:'fechaPedido',fct:(element: Pedidos) =>`${element.fechaPedido}` },
@@ -37,15 +31,22 @@ export class ConsultarPedidosComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-
+  startDate: string = '';
+  endDate: string = '';
+  rol: string | undefined;
+  Id: any;
+  length! : number;
+  load:boolean=false;
 
   constructor(private pedidosService: PedidosService,
-    private tokendecoder: TokenDecoderService ) {
+    private tokendecoder: TokenDecoderService/*, private dateAdapter: DateAdapter<Date>*/ ) {
+    // this.dateAdapter.setLocale('es');
   }
 
   
   ngOnInit(): void {
     this.getPedidos();
+    this.length = this.tableData.length;
   }
 
   ngAfterViewInit(): void {
@@ -61,7 +62,8 @@ export class ConsultarPedidosComponent implements OnInit, AfterViewInit {
     this.pedidosService.getPedidos(this.Id, this.rol).subscribe(pedidos => {
       this.tableData = pedidos;
       console.log(this.tableData)
-    
+      // this.dataSource.paginator = this.paginator;
+      // this.dataSource.sort = this.sort
     });
 
   }
@@ -88,7 +90,6 @@ export class ConsultarPedidosComponent implements OnInit, AfterViewInit {
     const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
     this.saveAsExcelFile(excelBuffer, 'pedidos');
   }
-
   
 
 }

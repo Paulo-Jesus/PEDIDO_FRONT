@@ -1,7 +1,7 @@
 export interface Pedidos {
     fechaPedido: string;
-    NombreUsuario: string;
-    NombreProducto: string;
-    Precio: number;
-    Cantidad: number;
+    nombreUsuario: string;
+    nombrePedido: string;
+    precioProducto: number;
+    cantidad: number;
 }

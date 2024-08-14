@@ -81,7 +81,6 @@
 
 .main_container_bg{
   width: 100%;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -196,6 +195,13 @@
     flex-direction: row;
     margin: 0 auto;
 }
+
+.container_table2 {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+}
 .mat-elevation-z8{
     border: var(--borde_negro_20);
     box-shadow: none;
@@ -245,6 +251,7 @@ mat-paginator{
         width: 100%;
         display: flex;
         justify-content: flex-end;   
+        
     }
 
     .container_main_actions_right .buttons_content_actions{

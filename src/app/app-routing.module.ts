@@ -14,6 +14,7 @@ import { ConsultarPedidosComponent } from './components/Pedidos/Historial-de-Ped
 import { VerRolesComponent } from './components/Seguridad/Crear-Perfil/ver-roles.component';
 import { AsignarRolesComponent } from './components/Seguridad/Asignar-Perfil/asignar-roles.component';
 import { Menu1Component } from './components/Pedidos/Menus-de-Sitios/menu1/menu1.component';
+import { ReportesComponent } from './components/Reporte/reportes/reportes.component';
 
 const routes: Routes = [
   {path:'',                                  redirectTo:'login', pathMatch:'full'},
@@ -27,6 +28,7 @@ const routes: Routes = [
       {path:'desbloquear_usuario',           component : DesbloquearUsuarioComponent},
       {path:'registrarRoles',                component : VerRolesComponent},
       {path:'asignarPerfil',                 component : AsignarRolesComponent},
+      {path:'reporte',                      component : ReportesComponent}
     ]
   },
   {path:'home/pedidos',                      component : ProveedorComponent,
@@ -38,7 +40,8 @@ const routes: Routes = [
       //{path:'historial_pedido'}
     ]
   },
-  {path:'restaurantes/formulario_registro',  component : Restaurante_formComponent}
+  {path:'restaurantes/formulario_registro',  component : Restaurante_formComponent},
+ 
   /*,
   {path:'home/reportes'},
   {path:'home/parametros'},

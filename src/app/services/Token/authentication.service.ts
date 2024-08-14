@@ -8,13 +8,12 @@ import { Enviroment } from 'src/enviroments/enviroment';
 })
 export class AuthenticationService {
 
-  myAppUrl = Enviroment.endpoint;
-  myApiUrl = "/Token/CompararTokens";
+  private ComparaToken =   Enviroment.ApiCompararToker;
 
   constructor(private http: HttpClient) { }
 
   compararTokens(tokenFrontend: string): Observable<boolean> {
   
-    return this.http.post<boolean>(`${this.myAppUrl}${this.myApiUrl}`, tokenFrontend);
+    return this.http.post<boolean>(`${this.ComparaToken}`, tokenFrontend);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -17,7 +17,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: './asignar-roles.component.html',
   styleUrls: ['./asignar-roles.component.css']
 })
-export class AsignarRolesComponent implements OnInit{
+export class AsignarRolesComponent implements OnInit, AfterViewInit{
 
   form:FormGroup;
   listEstados: any[] = [];
@@ -27,8 +27,8 @@ export class AsignarRolesComponent implements OnInit{
   selectedPerfil: string = '';
   selectedEstado: string = '';
 
-  pageSize: number = 0;
-
+  length! : number;
+  load:boolean=false;
 
   selectedOption!:string;
   datosTabla: Usuario[]= [];
@@ -55,8 +55,13 @@ export class AsignarRolesComponent implements OnInit{
   ngOnInit() {
     this.obtenerRoles();
     this.obtenerEstados();
+    this.length = this.datosTabla.length;
   }
   
+
+  ngAfterViewInit(): void {
+    this.dataSource.paginator=this.paginator;
+  }
 
   toggleEstado(role: Role): void {
     role.estado = role.estado === 1? 2 : 1;
@@ -112,15 +117,25 @@ export class AsignarRolesComponent implements OnInit{
   }
 
   
+  mostrarRol(id:number){
+    switch(id){
+      case id=1:
+         return "Activo";
+         break;
+      case id=2:
+        return "Inactivo";
+        break;
+      case id=3:
+        return "Bloqueado";
+        break;
+        default:
+        return "No hay rol";
+        break;
+      
+ 
+    }
 
-  rowSelect(element:any){
-    /*
-    this.userRowData = element;
-    this.nombreEstadoObtenido = this.userRowData.checked;
-    return this.nombreUsuarioObtenido = this.userRowData.nombreUsuario;
-    */
   }
-  
 
   // displayedColumns: string[] = ['perfil', 'estado'];
   // listEstados: any[] = [];

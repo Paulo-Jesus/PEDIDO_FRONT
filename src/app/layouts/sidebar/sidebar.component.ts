@@ -100,6 +100,11 @@ export class SidebarComponent implements OnInit {
     this.ocultarSideBar();
   }
 
+navigateToReporte() {
+    this.router.navigate(["home/seguridad/reporte/"]);
+    this.ocultarSideBar();
+  }
+
   isActive = false;
 
   toggleSidebar() {

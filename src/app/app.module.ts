@@ -53,6 +53,8 @@ import { ConsultarPedidosComponent } from './components/Pedidos/Historial-de-Ped
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { TableComponent } from './components/Utilities/table/table.component';
+import { ReportesComponent } from './components/Reporte/reportes/reportes.component';
+
 
 
 
@@ -85,6 +87,7 @@ import { TableComponent } from './components/Utilities/table/table.component';
     AsignarRolesComponent,
     Menu1Component,
     TableComponent,
+    ReportesComponent
     
   ],
   imports: [

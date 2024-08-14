@@ -18,6 +18,7 @@ export class Usuario_layoutComponent implements OnInit,AfterViewInit {
 
   form:FormGroup;
   selectedOption!:string;
+
   datosTabla: Usuario[]= [];
   dataSource = new MatTableDataSource<Usuario>(this.datosTabla);
   displayedColumns: string[] = ['action', 'identificacion', 'nombre', 'telefono' ,'correo','estado'];

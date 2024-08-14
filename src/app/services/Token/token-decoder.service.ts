@@ -6,6 +6,7 @@ import { CookieService } from 'Cookie/ngx-cookie-service';
 interface DecodedToken {
   Rol: string;
   Nombre: string;
+  Id: string;
 }
 
 @Injectable({
@@ -38,6 +39,20 @@ export class TokenDecoderService {
     try {
       const decodedToken: DecodedToken = jwtDecode(token);
       return decodedToken.Rol;
+    } catch (error) {
+      console.error('Error decoding token:', error);
+      return 'Desconocido'; 
+    }
+  }
+
+  obtainID(): string {
+    const token = this.cookieService.get('token');
+    if (!token) {
+      return 'Desconocido'; 
+    }
+    try {
+      const decodedToken: DecodedToken = jwtDecode(token);
+      return decodedToken.Id;
     } catch (error) {
       console.error('Error decoding token:', error);
       return 'Desconocido'; 

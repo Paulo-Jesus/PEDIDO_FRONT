@@ -99,7 +99,7 @@
   
         <ng-container matColumnDef="estado">
           <th mat-header-cell *matHeaderCellDef> Estado </th>
-          <td mat-cell *matCellDef="let element" id="state"> {{element.idEstado}} </td>
+          <td mat-cell *matCellDef="let element" id="state">{{mostrarRol(element.idEstado)}}</td>
         </ng-container>
       
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -108,9 +108,16 @@
       </table>
     </div>
   </div>
+
+  <mat-paginator 
+  [length]="length"
+  [pageSize]="5"
+  aria-label="Select page"
+  >
+</mat-paginator>
   </div>
 </div>
-<!-- 
+
 <div class="loader_content" *ngIf="load">
   <app-loader ></app-loader>
-</div> -->
+</div>

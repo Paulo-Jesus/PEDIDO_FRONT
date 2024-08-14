@@ -1,6 +1,7 @@
 import { UsuarioBlock } from "./UsuarioBlock";
 import { Usuario } from "./Usuario";
 import { Producto } from "./Producto";
+import { Pedidos } from "./Pedidos";
 
 export interface ResponseApi {
 code:boolean,
@@ -20,4 +21,11 @@ export interface ResponseApiProducto {
     code:boolean,
     message:string,
     data: Producto[],
+    }
+
+        
+export interface ResponseApiPedido{
+    code:boolean,
+    message:string,
+    data: Pedidos[],
     }
