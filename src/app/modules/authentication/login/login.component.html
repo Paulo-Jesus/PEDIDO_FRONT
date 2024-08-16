@@ -2,7 +2,7 @@
   <div class="container_content">
     <div class="container_title_form">
       <div class="content_title_name">
-        <h1>Bienvenido</h1>
+      
       </div>
     </div>
     <div class="container_image_form">
@@ -12,23 +12,22 @@
     </div>
     <div class="container_form">
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
-
-        <div class="elements">
+        <div class="text-center">
+        <label class="uppercase text-blue-900 font-semibold text-2xl content-center">Bienvenido</label>
+      </div>
+        <div class="elements mb-2 mt-4">
           <div class="icon">
             <mat-icon matPrefix>person</mat-icon>
           </div>
-          <mat-form-field appearance="outline" class="w-100">
-            <mat-label>Usuario</mat-label>
-            <input type="text" class="input" matInput autocomplete="off" formControlName="Correo">
-          </mat-form-field>
+          
+            <input type="text" class="input  rounded-lg border-gray-300" matInput autocomplete="off" formControlName="Correo" placeholder="Usuario">
+          
         </div>
         
         <div class="elements">
           <mat-icon class="icon" matPrefix>vpn_key</mat-icon>
-          <mat-form-field appearance="outline" class="w-100">
-            <mat-label>Contraseña</mat-label>
-            <input id="input" [type]="hide ? 'password' : 'text'" matInput autocomplete="off" formControlName="Contrasena" placeholder="Contraseña">
-          </mat-form-field>
+            <input id="input" class="input rounded-lg border-gray-300" [type]="hide ? 'password' : 'text'" matInput autocomplete="off" formControlName="Contrasena" placeholder="Contraseña">
+         
         </div>
         
         <div class="pt-4 mb-4 mt-0 buttons_content w-100">
@@ -40,9 +39,9 @@
         </button>
         </div>        
       </form>
-      <div class="row ">
-        <button class="btn btn-lg btn-google btn-block text-uppercase btn-outline" (click)="login()">
-            <img src="https://img.icons8.com/color/22/000000/google-logo.png"> Sing in Google
+      <div class="pt-1 mb-4 mt-0 buttons_content w-100 ">
+        <button class="btn  btn-google text-uppercase btn-outline flex flex-row-reverse pr-4" (click)="login()">
+          Sing in Google <img  src="https://img.icons8.com/color/22/000000/google-logo.png"> 
         </button>
       </div>
     </div>

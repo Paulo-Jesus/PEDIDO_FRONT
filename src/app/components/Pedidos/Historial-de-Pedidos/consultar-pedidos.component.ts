@@ -9,15 +9,36 @@ import { Pedidos } from 'src/app/Interfaces/Pedidos';
 import { PedidosService } from 'src/app/services/Pedidos/pedidos.service';
 import { MatSort } from '@angular/material/sort';
 import { TokenDecoderService } from 'src/app/services/Token/token-decoder.service';
-import { TableColumn } from 'src/app/Interfaces/tableContent';
+import { TableColumn } from 'src/app/Interfaces/TableColumn';
 
+const MY_DATE_FORMATS = {
 
+  parse: {
+
+    dateInput: 'dd/MM/yyyy',
+
+  },
+
+  display: {
+
+    dateInput: 'dd/MM/yyyy',
+
+    monthYearLabel: 'MMM yyyy',
+
+    dateA11yLabel: 'LL',
+
+    monthYearA11yLabel: 'MMMM yyyy',
+
+ },
+
+};
 @Component({
   selector: 'app-consultar-pedidos',
   templateUrl: './consultar-pedidos.component.html',
   styleUrls: ['./consultar-pedidos.component.css']
 })
 export class ConsultarPedidosComponent implements OnInit, AfterViewInit {
+
 
   startDate: string = '';
   endDate: string = '';
@@ -39,8 +60,10 @@ export class ConsultarPedidosComponent implements OnInit, AfterViewInit {
 
 
 
-  constructor(private pedidosService: PedidosService,
+  constructor(private pedidosService: PedidosService,private dateAdapter: DateAdapter<Date> ,
     private tokendecoder: TokenDecoderService ) {
+      this.dateAdapter.setLocale('es');
+
   }
 
   
@@ -70,7 +93,8 @@ export class ConsultarPedidosComponent implements OnInit, AfterViewInit {
     this.Id = this.tokendecoder.obtainID();
     if (this.startDate && this.endDate) {
       this.pedidosService.getPedidosByDateRange(this.startDate, this.endDate, this.Id,  this.rol).subscribe(pedidos => {
-        this.dataSource.data = pedidos;
+        this.tableData = pedidos;
+        console.log(this.tableData)
       });
     }
   }
@@ -81,7 +105,7 @@ export class ConsultarPedidosComponent implements OnInit, AfterViewInit {
   }
 
   exportToExcel(): void {
-    const data = this.dataSource.data;
+    const data = this.tableData;
     const worksheet = XLSX.utils.json_to_sheet(data);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, 'Pedidos');

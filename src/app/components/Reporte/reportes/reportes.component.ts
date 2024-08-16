@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import * as saveAs from 'file-saver';
 import { Pedidos } from 'src/app/Interfaces/Pedidos';
-import { TableColumn } from 'src/app/Interfaces/tableContent';
+import { TableColumn } from 'src/app/Interfaces/TableColumn';
 import { PedidosService } from 'src/app/services/Pedidos/pedidos.service';
 import { TokenDecoderService } from 'src/app/services/Token/token-decoder.service';
 import * as XLSX from "xlsx";
@@ -83,7 +83,7 @@ export class ReportesComponent implements OnInit,AfterViewInit{
   }
 
   exportToExcel(): void {
-    const data = this.dataSource.data;
+    const data = this.tableData;
     const worksheet = XLSX.utils.json_to_sheet(data);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, 'Pedidos');

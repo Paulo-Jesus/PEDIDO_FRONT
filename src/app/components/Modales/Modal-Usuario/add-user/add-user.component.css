@@ -1,3 +1,10 @@
+
+
+  .mat-dialog-container{
+  height: 100%;
+  width: 100;
+  }
+
 /* 
 
 
@@ -99,6 +106,8 @@
 #cancel:hover {
   background-color: #5a6268;
 }
+
+
 .mat-checkbox.example-margin {
   margin-top: 8px;
 }
@@ -110,7 +119,7 @@
 
 
 
-
+/* 
 
 
 
@@ -443,4 +452,4 @@
     #cancel{
         background-color: var(--boton_lila_oscuro);
     }
-} 
+}  */

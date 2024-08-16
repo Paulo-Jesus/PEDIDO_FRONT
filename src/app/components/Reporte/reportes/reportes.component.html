@@ -1,10 +1,16 @@
 <div class="flex h-full w-full">
   <div class="rounded-lg p-2 pt-0 h-full w-full">
     <div class="flex items-center justify-center h-full p-2">
-      <div id="cuadro" class="pl-20 pt-4 pr-2 pb-4 mb-60 rounded-lg items-center justify-center w-full">
+      <div
+        id="cuadro"
+        class="pl-20 pt-4 pr-2 pb-4 mb-60 rounded-lg items-center justify-center w-full"
+      >
         <div class="text-center mb-4">
-        <label class="text-xl font-bold text-violet-500">Reporte de Pedidos</label>
-      </div>
+          <label class="text-xl font-bold text-violet-500"
+            >Reporte de Pedidos</label
+          >
+        </div>
+        
         <div class="flex flex-row flex-wrap gap-4 pl-10">
           <div>
             <label
@@ -14,13 +20,13 @@
             </label>
             <div class="relative mt-2 rounded-md shadow-sm">
               <div
-                class="pointer-events-none absolute inset-y-0 left-0 flex items-center "
+                class="pointer-events-none absolute inset-y-0 left-0 flex items-center"
               ></div>
               <input
                 type="text"
                 name="price"
                 id="price"
-                class="block w-full rounded-md border-0  p-2.5 py-1.5 text-gray-900 ring-0 ring-inset ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6"
+                class="block w-full rounded-md border-0 p-2.5 py-1.5 text-gray-900 ring-0 ring-inset ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -39,7 +45,7 @@
                 type="text"
                 name="nombre"
                 id="nombre"
-                class="block w-full rounded-md border-0  p-2.5 py-1.5 text-gray-900 ring-0 ring-inset ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6"
+                class="block w-full rounded-md border-0 p-2.5 py-1.5 text-gray-900 ring-0 ring-inset ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -58,7 +64,9 @@
                 name="perfil"
                 id="perfil"
                 class="block w-full rounded-md border-0 mr-10 p-2.5 py-1.5 pl-4 pr-12 text-gray-900 ring-0 ring-inset ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6"
-              > <option selected>Seleccione</option></select>
+              >
+                <option selected>Seleccione</option>
+              </select>
             </div>
           </div>
 
@@ -84,125 +92,94 @@
             </div>
           </div>
 
-          <!-- <div class="flex flex-row mt-2  rounded-md shadow-sm">
-                    
-                   
-                    </div> -->
-
-                    
-          <div
-            id="date-range-picker"
-            date-rangepicker
-            class="flex flex-row  gap-4 "
-          >
-            <div>
-              <label
-                for="iniciofecha"
-                class="block text-sm font-medium leading-6 text-gray-900"
-                >Desde:</label
-              >
-              <div class="relative mt-2 rounded-md shadow-sm">
-                <div
-                class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                  <svg
-                    class="w-4 h-4 text-gray-500 dark:text-gray-400"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
-                    />
-                  </svg>
-                </div>
-                <input
-                  id="datepicker-range-start"
-                  name="start"
-                  type="text"
-                  class="block w-full rounded-md border-0 ps-10 p-2.5 py-1.5 text-gray-900 ring-0 ring-inset ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6"
-                  placeholder="Selecciona fecha inicio"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label
-                for="finfecha"
-                class="block text-sm font-medium leading-6 text-gray-900"
-                >Fecha Hasta:</label
-              >
-              <div class="relative mt-2 rounded-md shadow-sm">
-                <div
-                  class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
-                >
-                  <svg
-                    class="w-4 h-4 text-gray-500 dark:text-gray-400"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
-                    />
-                  </svg>
-                </div>
-                <input
-                  id="datepicker-range-end"
-                  name="end"
-                  type="text"
-                  class="block w-full rounded-md border-0 ps-10 p-2.5 py-1.5 text-gray-900 ring-0 ring-inset ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6"
-                  placeholder="Seleccione fecha fin"
-                />
-              </div>
-            </div>
-
-
-
-            <div class="flex flex-row ml-15 pt-6 gap-2">
-              <div class="relative mt-2 rounded-md shadow-sm">
-                <div
-                  class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
-                ></div>
-                <button
-                  (click)="applyFilter()" 
-                  id="buscar"
-                  class=" block w-full bg-indigo-600  rounded-md border-0 mr-4 p-2.5 py-1.5 pl-4 pr-4 text-white ring-0 ring-inset ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6 placeholder:text-gray-600"
-                > Buscar  <i class="bi bi-search"></i>
-                 
-                </button>
-              </div>
-
-              <div class="relative mt-2 rounded-md shadow-sm">
-                <div
-                  class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
-                ></div>
-                <button
-                 (click)="exportToExcel()"
-                  id="buscar"
-                  class=" block w-full bg-teal-700 rounded-md border-0 mr-4 p-2.5 py-1.5 pl-4 pr-4 text-white ring-0 ring-inset ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6 placeholder:text-gray-600"
-                > Descargar <i class="bi bi-box-arrow-down"></i>
-                 
-                </button>
-              </div>
+          <div>
+            <label
+              for="perfil"
+              class="block text-sm font-medium leading-6 text-gray-900"
+              >Fecha Desde:</label
+            >
+            <div class="relative mt-2 rounded-md shadow-sm">
+              <div
+                class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+              ></div>
+              <input
+                matInput
+                [(ngModel)]="startDate"
+                [matDatepicker]="startPicker"
+                class="rounded-md border-0 pt-3 pb-2 text-gray-900 ring-0 ring-inset ring-gray-300 "
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="startPicker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #startPicker></mat-datepicker>
             </div>
           </div>
 
-          <div id="cuadro" *ngIf="tableData.length" class="pl-15 pt-4">
-             <app-table
-              [tableColumns]="tableColumns" 
-             [tableData]="tableData">
-              </app-table>
+          <div>
+            <label
+              for="perfil"
+              class="block text-sm font-medium leading-6 text-gray-900"
+              >Fecha Hasta:</label
+            >
+            <div class="relative mt-2 rounded-md shadow-sm">
+              <div
+                class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+              ></div>
+              <input
+                matInput
+                [(ngModel)]="endDate"
+                [matDatepicker]="endPicker"
+                 class="rounded-md border-0 pt-3 pb-2 text-gray-900 ring-0 ring-inset ring-gray-300 "
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="endPicker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #endPicker></mat-datepicker>
+            </div>
           </div>
 
-          <mat-paginator 
+          <div class="flex flex-row ml-15 pt-4 gap-2">
+            <div class="relative  ">
+              <div
+                class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+              ></div>
+              <button
+                (click)="applyFilter()"
+                id="buscar"
+                class="block w-full bg-indigo-600 rounded-md border-0 mr-4 p-2.5 py-1.5 pl-4 pr-4 text-white ring-0 ring-inset ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6 hover:bg-indigo-800 placeholder:text-gray-600"
+              >
+                Buscar <i class="bi bi-search"></i>
+              </button>
+            </div>
+
+            <div class="relative ">
+              <div
+                class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+              ></div>
+              <button
+                (click)="exportToExcel()"
+                id="buscar"
+                class="block w-full bg-teal-700 rounded-md border-0 mr-4 p-2.5 py-1.5 pl-4 pr-4 text-white ring-0 ring-inset ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6 hover:bg-teal-950 placeholder:text-gray-600"
+              >
+                Descargar <i class="bi bi-box-arrow-down"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div id="cuadro" *ngIf="tableData.length" class="pl-15 pt-4">
+          <app-table [tableColumns]="tableColumns" [tableData]="tableData">
+          </app-table>
+        </div>
+
+        <mat-paginator
           [length]="length"
           [pageSize]="5"
           aria-label="Select page"
-          >
+        >
         </mat-paginator>
-        </div>
       </div>
     </div>
   </div>

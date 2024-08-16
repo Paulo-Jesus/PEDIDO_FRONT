@@ -1,13 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { TableColumn } from 'src/app/Interfaces/tableContent';
+import { TableColumn } from 'src/app/Interfaces/TableColumn';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent<T> implements OnInit {
+export class TableComponent<T> implements OnInit, OnChanges {
 
   @Input()
   tableColumns: Array<TableColumn> = [];
@@ -20,6 +20,13 @@ export class TableComponent<T> implements OnInit {
 
   constructor(){
   }
+  ngOnChanges(changes: SimpleChanges): void {
+   if (changes['tableData']) {
+    this.dataSource = new MatTableDataSource(this.tableData);
+    
+   }
+  }
+
   ngOnInit():void {
     this.displayedColumns = this.tableColumns.map((c) => c.nameProperty);
     this.dataSource = new MatTableDataSource(this.tableData);

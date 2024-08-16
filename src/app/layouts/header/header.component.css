@@ -87,6 +87,7 @@ header{
         justify-content: center;
         align-items: center;
         opacity: 1;
+        color:red;
     }
     .icon_content i{
         font-size: 1.6rem;

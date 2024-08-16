@@ -53,6 +53,7 @@ export class Menu1Component implements OnInit {
 
     })
   }
+  
 
   ingresarProductos(producto: Producto) {
     this._productoServicio.ingresarProducto(producto).subscribe({

@@ -1,5 +1,5 @@
 //HOST SWAGGER 
-const endpoint = "http://localhost:5092";
+const endpoint = "http://192.168.10.110:5092";
 
 export const Enviroment = {
 
@@ -7,7 +7,7 @@ export const Enviroment = {
 
     //HOST SWAGGER 
 
-    endpoint : "http://localhost:5092",
+    endpoint : "http://192.168.10.110:5092",
 
     
 

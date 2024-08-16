@@ -18,11 +18,11 @@
     text-align: center;
 }
 .container_image_form{
-    margin-bottom: 25px;
+    margin-bottom: 1px;
 }
 .container_image_form .content_image img{
     width: 150px;
-    height: auto;
+   
 }
 .container_form .elements{
     display:flex;
@@ -59,11 +59,12 @@
     background-color: none;
     font-size: 0.8rem;
     color: var(--boton_lila);
-    margin-top: 10px;
+    margin-top: 6px;
 }
 
 .row {
-    margin: 1%;
+    margin-left: 1%;
+
 }
 
 .btn-google:hover {
@@ -73,9 +74,16 @@
     color: #ffffff;
 }
 
+.buttonLogin{
+    background-color: var(--bg_lila_100);
+    color: var(--color_texto_blanco);
+    width: 200px;
+    font-size: 0.8rem;
+}
 .btn-google {
     color: #545454;
     background-color: #ffffff;
+    width: 200px;
     box-shadow: 0 1px 3px 1px #ddd;
     border-radius: 5px;
 }
