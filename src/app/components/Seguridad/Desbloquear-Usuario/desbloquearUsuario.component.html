@@ -1,50 +1,73 @@
-<div class="main_container_bg">
-  <div class="container_info">
-    <div class="header_title_content">
-      <h1>Desbloquear Usuario</h1>
-    </div>
+
+<div class="flex h-full w-full">
+  <div class="rounded-lg p-2 pt-0 h-full w-full">
+    <div class="h-full w-full justify-center items-center relative">
+      <div
+      id="cuadro"
+      class="pl-12 pt-4 pr-2 mb-8 rounded-lg items-center justify-center w-full "
+    >
+      <div class="text-center mb-4">
+        <label class="text-xl font-bold text-violet-500"
+          >Desbloquear Usuario</label
+        >
+      </div>
 
 
-    <div class="container_table">      
-      <div class="container_main_actions">
-        <div class="container_main_actions_left">
-          <div class="container_name">
-            <p>Rol:</p>   
-            <div class="container_form_button">      
-              <mat-form-field appearance="outline" id="checkSelect">
-                <mat-label>Elija una opcion</mat-label>
+        <div class="flex flex-row flex-wrap gap-4 pl-10">
+          <div >
+            <label>Rol:</label>   
+            <div class="mt-1">      
+              <mat-form-field appearance="outline" >
+                <mat-label class="text-gray-300 italic text-sm ">Selecciona una opción</mat-label>
                 <mat-select [ngModel]="selectedOption" (ngModelChange)="setSelection($event)"> 
-                  <mat-option value="pInicial">Elija una opcion</mat-option>             
                   <mat-option *ngFor="let data of datosTabla" [value]="data.nombreRol">{{data.nombreRol}}</mat-option>
                 </mat-select>
               </mat-form-field>
-              <mat-form-field appearance="outline" id="checkSelect">
-                <mat-label>Correo electronico:</mat-label>
-                <input type="text" matInput #correo>
-              </mat-form-field>
-              <button mat-button class="buttons" id="clean" (click)="limpiarDatos()">
-                <i class="bi bi-trash"></i>              
-              </button>
             </div>
           </div>
-        </div>
-        <div class="container_main_actions_right">
-          <div class="buttons_content_actions">
-            <button mat-button class="buttons" id="search" (click)="buscarUsuario(correo.value,correo)">
+
+          <div >
+          <label>Correo Electrónico:</label>   
+          <div class=" relative mt-1">
+            <div
+            class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+          ></div>
+              
+                <mat-label class="text-gray-300 italic text-sm "></mat-label>
+                <input type="text" matInput class=" rounded-md py-[15px]  border-zinc-400" #correo >
+              
+            </div>
+          </div>
+
+          <div class="mt-3 justify-start">
+              <button class="rounded px-4 bg-red-600 text-white mt-3 p-2 hover:bg-red-800"  (click)="limpiarDatos()">
+                <i class="bi bi-trash size-2"></i>              
+              </button>
+          </div> 
+          
+        
+        <div class="flex flex-row gap-2 pt-8 pl-10">
+          <div class="">
+            <button class="block w-full bg-purple-800 rounded-md border-0 mr-4 p-2.5 py-1 pl-4 pr-4 text-white ring-0 ring-inset ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6 hover:bg-purple-900 placeholder:text-gray-600" id="search" (click)="buscarUsuario(correo.value,correo)">
               Buscar
-              <i class="bi bi-search"></i>
+              <i class="bi bi-search "></i>
             </button>
-            <button mat-button class="buttons" id="unlock" (click)="desbloquearUsuario()">
+          </div>
+          <div class="">
+            <button class="block w-full bg-pink-600 rounded-md border-0 mr-4 p-2.5 py-1 pl-4 pr-4 text-white ring-0 ring-inset
+            ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6 hover:bg-pink-800 placeholder:text-gray-600" id="unlock" (click)="desbloquearUsuario()">
               Desbloquear
               <i class="bi bi-unlock"></i>
             </button>
           </div>
         </div>
       </div>
+    </div>
 
 
-      <div class="container_table">
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <div class="p-15">
+        <table mat-table [dataSource]="dataSource" class="">
       
           <ng-container matColumnDef="check" sticky>
             <th mat-header-cell *matHeaderCellDef> </th>
@@ -77,7 +100,6 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
         </table>
-      </div>
     </div>
     
     <mat-paginator 
@@ -88,7 +110,9 @@
     </mat-paginator>
     
   </div>
-</div>
+
+
+
 
 <div class="loader_content" *ngIf="load">
   <app-loader ></app-loader>

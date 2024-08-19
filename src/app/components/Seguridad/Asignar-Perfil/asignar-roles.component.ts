@@ -19,7 +19,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class AsignarRolesComponent implements OnInit, AfterViewInit{
 
-  form:FormGroup;
+  // tableData: Array<ListaMenu> = [];
+
   listEstados: any[] = [];
   listPerfiles: string[] = [];
   allRoles: Role[] = [];
@@ -37,7 +38,7 @@ export class AsignarRolesComponent implements OnInit, AfterViewInit{
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(
-    private fb: FormBuilder,
+    
     private dialog: Dialog,
     private roleService: RolesService, 
     private estadoServices: EstadosService,
@@ -45,11 +46,7 @@ export class AsignarRolesComponent implements OnInit, AfterViewInit{
 
     private _usuarioServicio: UsuarioService
   ) { 
-    this.form = this.fb.group({
-      identificacion: [''],
-      nombre: [''],
-      opcion: ['']
-    });
+    
   }
 
   ngOnInit() {

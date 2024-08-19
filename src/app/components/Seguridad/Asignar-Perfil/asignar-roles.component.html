@@ -1,113 +1,94 @@
-<div class="main_container_bg">
-  <div class="container_info">
-      <div class="container_header_title">
-        <h1> Asignación de Perfil</h1>
-      </div>
-      <div class="container_table">      
-          <div class="container_buttons_actions">
-          <form 
-            [formGroup]="form" class="form_content"
-          >
-            <div class="container_main_actions_left">
-              <div class="container_form_button"> 
+<div class="flex h-full w-full">
+  <div class="rounded-lg p-2 pt-0 h-full w-full">
+    <div class="h-full w-full justify-center items-center relative">
+      <div
+      id="cuadro"
+      class="pl-12 pt-4 pr-2 mb-8 rounded-lg items-center justify-center w-full "
+    >
+    <div class="text-center mb-4">
+      <label class="text-xl font-bold text-violet-500"
+        >Asignación de Perfil</label
+      >
+    </div>
 
+      <div class="flex flex-row flex-wrap gap-4 pl-10">      
+        
+            <div> 
+                <label>Perfil:</label>   
+                <div class="mt-1"> 
 
-                <mat-form-field appearance="outline" class="filtro">
-                  <mat-label>Colaboradores</mat-label>
+                <mat-form-field appearance="outline">
+                  <mat-label class="text-gray-300 italic text-sm">Seleccione colaboradores</mat-label>
                   <mat-select [(ngModel)]="selectedPerfil">
                      <mat-option *ngFor="let perfil of listPerfiles" [value]="perfil">
                        {{ perfil }}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
+            </div>
+          </div>
 
+
+          <div >
+            <label>Modelo:</label>  
+            <div class="mt-1">       
                 <mat-form-field appearance="outline" class="filtro">
-                  <mat-label>Pedidos</mat-label>
+                  <mat-label class="text-gray-300 italic text-sm">Seleccione pedidos</mat-label>
                   <mat-select [(ngModel)]="selectedEstado">
                     <mat-option *ngFor="let item of listEstados" [value]="item.nombre">
                       {{ item.nombre }}
                     </mat-option>
                   </mat-select>
-                </mat-form-field>              
+                </mat-form-field>   
+              </div>
+            </div>           
                 
 
           
-              <div class="container_selected_button">
-              <mat-form-field class="content_id" appearance="outline">
-              <mat-label>Estado:</mat-label>
-                <mat-select class="select" formControlName="opcion" aria-placeholder="Empresa:">
-                  <mat-option value="opt1">Activo</mat-option>
-                  <mat-option value="opt2">Inactivo</mat-option>
-                </mat-select>
+              <div>
+                <label>Estado:</label>  
+              <div class="mt-1">      
+                <mat-form-field appearance="outline">
+              <mat-label class="text-gray-300 italic text-sm">Seleccione un estado</mat-label>
+              <mat-select [(ngModel)]="selectedEstado">
+                <mat-option *ngFor="let item of listEstados" [value]="item.nombre">
+                  {{ item.nombre }}
+                </mat-option>
+              </mat-select>
               </mat-form-field>
               </div>
             </div>
-            </div>
-            <div class="container_main_actions_right">
-              <div class="container_buttons">
-                <button mat-button class="buttons" id="search">
+
+
+            <div class="flex flex-row gap-2 pt-8 pl-4">
+              <div class="">
+                <button  class="block w-full bg-purple-700 rounded-md border-0 mr-4 p-2.5 py-1 pr-4 text-white ring-0 ring-inset ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6 hover:bg-indigo-800 placeholder:text-gray-600" id="search">
                   Guardar
                   <i class="bi bi-search"></i>
                 </button>
-                <button mat-button class="buttons" id="add" >
+              </div>
+              <div class="">
+                <button class="block w-full bg-purple-600 rounded-md border-0 mr-4 p-2.5 py-1  pr-4 text-white ring-0 ring-inset ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6 hover:bg-indigo-800 placeholder:text-gray-600" id="add" >
                   Cancelar
                   <i class="bi bi-plus"></i>          
                 </button>
               </div>
+
             </div>
-         </form>
+         
        </div>
 
-    <div class="container_table">
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-       
+    
+ 
+ 
+      </div>
 
 
-        <ng-container matColumnDef="action">
-          <th mat-header-cell *matHeaderCellDef>Acciones</th>
-          <td mat-cell *matCellDef="let element"> 
-            <button mat-button class="buttons" id="edit">
-              <mat-icon>edit</mat-icon>
-            </button>
-          </td>
-        </ng-container>
-      
-        <ng-container matColumnDef="identificacion" sticky>
-          <th mat-header-cell *matHeaderCellDef> Identificacion </th>
-          <td mat-cell *matCellDef="let element">{{element.cedula}}</td>
-        </ng-container>
-      
-        <ng-container matColumnDef="Perfil">
-          <th mat-header-cell *matHeaderCellDef> Perfil </th>
-          <td mat-cell *matCellDef="let element">{{element.nombre}}</td>
-        </ng-container>
-  
-        <!-- <ng-container matColumnDef="nombreUsuario">
-          <th mat-header-cell *matHeaderCellDef> Usuario </th>
-          <td mat-cell *matCellDef="let element">{{element.nombreUsuario}}</td>
-        </ng-container> -->
-      
-        <ng-container matColumnDef="telefono">
-          <th mat-header-cell *matHeaderCellDef> Telefono </th>
-          <td mat-cell *matCellDef="let element" id="empresa"> {{element.telefono}} </td>
-        </ng-container>
 
-        <ng-container matColumnDef="correo">
-          <th mat-header-cell *matHeaderCellDef> Correo </th>
-          <td mat-cell *matCellDef="let element" id="correo"> {{element.correo}} </td>
-        </ng-container>
-  
-        <ng-container matColumnDef="estado">
-          <th mat-header-cell *matHeaderCellDef> Estado </th>
-          <td mat-cell *matCellDef="let element" id="state">{{mostrarRol(element.idEstado)}}</td>
-        </ng-container>
-      
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  
-      </table>
-    </div>
-  </div>
+      <!-- <div id="cuadro" *ngIf="tableData.length" class="pl-15 pt-4">
+        <app-table [tableColumns]="tableColumns" [tableData]="tableData">
+        </app-table>
+      </div> -->
 
   <mat-paginator 
   [length]="length"
@@ -115,8 +96,9 @@
   aria-label="Select page"
   >
 </mat-paginator>
+
   </div>
-</div>
+
 
 <div class="loader_content" *ngIf="load">
   <app-loader ></app-loader>
