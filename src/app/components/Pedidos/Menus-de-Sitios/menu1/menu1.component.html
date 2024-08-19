@@ -1,0 +1,90 @@
+<div class="flex h-full w-full">
+  <div class="rounded-lg p-2 pt-0 h-full w-full">
+    <div
+      id="col 2"
+      class="flex flex-row items-start justify-center w-full h-full bg-white"
+    >
+      <div class="basis-3/4">
+        <div
+          id="cuadro"
+          class="flex flex-col pt-4 pr-2 pl-4 pb-4 rounded-lg h-full w-full"
+        >
+          <div class="text-center mb-4">
+            <label class="text-xl font-bold text-violet-500"
+              >Reporte de Pedidos</label
+            >
+          </div>
+          <div id="grid" class="w-full flex flex-wrap gap-4 bg-transparent">
+            <div
+              class="w-full md:w-1/4 xl:w-1/5 flex flex-col rounded-lg border-0 bg-slate-200"
+              *ngFor="let item of datosProducto; let i = index"
+            >
+              <div class="">
+                <img
+                  [src]="'data:image/png;base64,' + item.imagenBase64"
+                  alt="item.nombre"
+                  class="w-full h-40 px-2 py-2"
+                />
+
+                <div class="text-center font-medium pt-4 text-gray-900">
+                  <p>{{ item.nombre }}</p>
+                  <p>{{ item.precio | currency }}</p>
+                </div>
+                <button
+                  class="w-full h-10 rounded-b-lg border-0 mr-4 mb-1 pt-1 bg-violet-500 text-white font-semibold hover:bg-violet-800"
+                  id="search"
+                  (click)="addToMenu()"
+                >
+                  Agregar +
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="basis-1/4 pt-10 pr-6">
+        <div
+          id="cuadro-menu"
+          class="w-full h-60  flex flex-wrap  bg-slate-200"
+        >
+          <div class="py-2.5 text-center">
+            <label class="uppercase text-gray-900 font-semibold">Mi Menú</label>
+          </div>
+          <div
+            class=""
+            *ngFor="let item of datosListadoProducto; let i = index"
+          >
+            <table
+              mat-table
+              [dataSource]="dataSourceProducto"
+              class="mat-elevation-z8"
+            >
+              <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let item">
+                  <button mat-button class="buttons" id="delete">
+                    <mat-icon>delete </mat-icon>
+                  </button>
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef>Producto</th>
+                <td mat-cell *matCellDef="let item">{{ item.nombre }}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef>Precio</th>
+                <td mat-cell *matCellDef="let item">{{ item.precio }}</td>
+              </ng-container>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="loader_content" *ngIf="load">
+        <app-loader></app-loader>
+      </div>
+    </div>
+  </div>
+</div>

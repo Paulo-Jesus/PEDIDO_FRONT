@@ -6,16 +6,16 @@
     </div>
     <form [formGroup]="form" class="form" (ngSubmit)="onSubmit()">
       <div class="container_wrapper">
-        <div class="input-group" id="ruc">
-          <mat-label>RUC</mat-label>
-          <input matInput type="text" formControlName="ruc" [maxlength]="13">
-        </div>
-        
-        <div class="input-group" id="nombre">
-          <mat-label>Nombre</mat-label>
-          <input matInput type="text" formControlName="nombre" [maxlength]="100">
-        </div>
-      </div>
+         <div class="input-group" id="ruc">
+            <mat-label>RUC</mat-label>
+            <input matInput type="text" formControlName="ruc" [maxlength]="13">
+          </div>
+  
+         <div class="input-group" id="nombre">
+            <mat-label>Nombre</mat-label>
+            <input matInput type="text" formControlName="nombre" [maxlength]="100">
+          </div>
+       </div>
 
       <div class="input-group" id="correo">
         <mat-label>Correo</mat-label>
@@ -26,7 +26,7 @@
         <mat-label>Telefono</mat-label>
         <input matInput type="text" formControlName="telefono" [maxlength]="10">
       </div>
-      
+
       <div class="input-group" id="direccion">
         <mat-label>Direccion</mat-label>
         <input matInput type="text" formControlName="direccion" [maxlength]="100">
@@ -49,5 +49,5 @@
 </div>
 
 <div class="loader_content" *ngIf="load">
-  <app-loader ></app-loader>
+  <app-loader></app-loader>
 </div>

@@ -1,0 +1,187 @@
+<div class="flex h-full w-full">
+  <div class="rounded-lg p-2 pt-0 h-full w-full">
+    <div class="flex items-center justify-center h-full p-2">
+     
+      <div
+        id="cuadro"
+        class="pl-20 pt-4 pr-2 pb-4 mb-60 rounded-lg items-center justify-center w-full"
+      >
+        <div class="text-center mb-4">
+          <label class="text-xl font-bold text-violet-500"
+            >Reporte de Pedidos</label
+          >
+        </div>
+        
+        <div class="flex flex-row flex-wrap gap-4 pl-10">
+          <div>
+            <label
+              for="identificacion"
+              class="block text-sm font-medium leading-6 text-gray-900"
+              >Identificación:
+            </label>
+            <div class="relative mt-2 rounded-md shadow-sm">
+              <div
+                class="pointer-events-none absolute inset-y-0 left-0 flex items-center"
+              ></div>
+              <input
+                type="text"
+                name="price"
+                id="price"
+                class="block w-full rounded-md border-0 p-2.5 py-1.5 text-gray-900 ring-0 ring-inset ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label
+              for="nombre"
+              class="block text-sm font-medium leading-6 text-gray-900"
+              >Nombre:</label
+            >
+            <div class="relative mt-2 rounded-md shadow-sm">
+              <div
+                class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+              ></div>
+              <input
+                type="text"
+                name="nombre"
+                id="nombre"
+                class="block w-full rounded-md border-0 p-2.5 py-1.5 text-gray-900 ring-0 ring-inset ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label
+              for="perfil"
+              class="block text-sm font-medium leading-6 text-gray-900"
+              >Perfil:</label
+            >
+            <div class="relative mt-2 rounded-md shadow-sm">
+              <div
+                class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+              ></div>
+              <select
+                name="perfil"
+                id="perfil"
+                class="block w-full rounded-md border-0 mr-10 p-2.5 py-1.5 pl-4 pr-12 text-gray-900 ring-0 ring-inset ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6"
+              >
+                <option selected>Seleccione</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label
+              for="empresa"
+              class="block text-sm font-medium leading-6 text-gray-900"
+              >Empresa:</label
+            >
+            <div class="relative mt-2 rounded-md shadow-sm">
+              <div
+                class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+              ></div>
+              <select
+                name="empresa"
+                placeholder="Seleccione"
+                type="text"
+                id="empresa"
+                class="block w-full rounded-md border-0 mr-10 p-2.5 py-1.5 pl-4 pr-12 text-gray-900 ring-0 ring-inset ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6 placeholder:text-gray-600"
+              >
+                <option selected>Seleccione</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label
+              for="perfil"
+              class="block text-sm font-medium leading-6 text-gray-900"
+              >Fecha Desde:</label
+            >
+            <div class="relative mt-2 rounded-md shadow-sm">
+              <div
+                class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+              ></div>
+              <input
+                matInput
+                [(ngModel)]="startDate"
+                [matDatepicker]="startPicker"
+                class="rounded-md border-0 pt-3 pb-2 text-gray-900 ring-0 ring-inset ring-gray-300 "
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="startPicker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #startPicker></mat-datepicker>
+            </div>
+          </div>
+
+          <div>
+            <label
+              for="perfil"
+              class="block text-sm font-medium leading-6 text-gray-900"
+              >Fecha Hasta:</label
+            >
+            <div class="relative mt-2 rounded-md shadow-sm">
+              <div
+                class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+              ></div>
+              <input
+                matInput
+                [(ngModel)]="endDate"
+                [matDatepicker]="endPicker"
+                 class="rounded-md border-0 pt-3 pb-2 text-gray-900 ring-0 ring-inset ring-gray-300 "
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="endPicker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #endPicker></mat-datepicker>
+            </div>
+          </div>
+
+          <div class="flex flex-row ml-15 pt-4 gap-2">
+            <div class="relative  ">
+              <div
+                class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+              ></div>
+              <button
+                (click)="applyFilter()"
+                id="buscar"
+                class="block w-full bg-indigo-600 rounded-md border-0 mr-4 p-2.5 py-1.5 pl-4 pr-4 text-white ring-0 ring-inset ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6 hover:bg-indigo-800 placeholder:text-gray-600"
+              >
+                Buscar <i class="bi bi-search"></i>
+              </button>
+            </div>
+
+            <div class="relative ">
+              <div
+                class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+              ></div>
+              <button
+                (click)="exportToExcel()"
+                id="buscar"
+                class="block w-full bg-teal-700 rounded-md border-0 mr-4 p-2.5 py-1.5 pl-4 pr-4 text-white ring-0 ring-inset ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6 hover:bg-teal-950 placeholder:text-gray-600"
+              >
+                Descargar <i class="bi bi-box-arrow-down"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div id="cuadro" *ngIf="tableData.length" class="pl-15 pt-4">
+          <app-table [tableColumns]="tableColumns" [tableData]="tableData">
+          </app-table>
+        </div>
+
+        <mat-paginator
+          [length]="length"
+          [pageSize]="5"
+          aria-label="Select page"
+        >
+        </mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>

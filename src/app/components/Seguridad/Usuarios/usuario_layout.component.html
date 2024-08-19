@@ -1,0 +1,172 @@
+<div class="flex h-full w-full">
+  <div class="rounded-lg p-2 pt-0 h-full w-full">
+    <div class="h-full w-full justify-center items-center relative">
+      <div
+      id="cuadro"
+      class="pl-12 pt-4 pr-2 mb-8 rounded-lg items-center justify-center w-full "
+    >
+      <div class="text-center mb-4">
+        <label class="text-xl font-bold text-violet-500"
+          >Registro de Usuarios</label
+        >
+      </div>
+
+      <form [formGroup]="form">
+      <div class="flex flex-row flex-wrap gap-4 pl-10">     
+          <div>
+                <label
+                  for="identificacion"
+                  class="block text-sm font-medium  text-gray-900">
+                  Identificacion:</label
+                  >
+                  <div class=" relative mt-1 ">
+                    <div
+                      class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+                    ></div>
+                    
+                     <input
+                      matInput
+                      type="text"
+                      maxlength="10"
+                      formControlName="identificacion"
+                      class="rounded-md p-2.5 py-[15px] border-gray-400 "
+                    />
+                  
+                </div>
+            </div>
+
+          <div>
+                <label
+              for="nombre"
+              class="block text-sm font-medium  text-gray-900"
+              >Nombre:</label
+              >
+              <div class="relative mt-1 ">
+                <div
+                  class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+                ></div>
+                
+                  <input
+                    matInput
+                    type="text"
+                    maxlength="30"
+                    formControlName="nombre"
+                    class=" rounded-md p-2.5 py-[15px] border-gray-400 "
+                  />
+                
+              </div>
+          </div>
+
+          <div>
+                <label
+                for="perfil"
+                class="block text-sm font-medium  text-gray-900"
+                >Empresa:</label
+              >
+                <div class=" mt-1 ">
+                <div
+                  class=""
+                ></div>
+                  
+                    <select
+                     name="empresa"
+                     id="empresa"
+                     class=" text-gray-300 italic py-3 pl-3 pr-20 rounded-md border-zinc-400"
+                      >       
+                      <option selected>Seleccione una opción</option>
+                    </select>
+                  
+                </div>
+          </div>
+
+          <div class="flex flex-row gap-2 pt-6">
+            <div class="">
+                <button  
+                class="block w-full bg-purple-600 rounded-md border-0 mr-4 p-2.5 py-1.5 pl-4 pr-4 text-white ring-0 ring-inset ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6 hover:bg-indigo-800 placeholder:text-gray-600" id="search">
+
+                  Buscar
+                  <i class="bi bi-search"></i>
+                </button>
+            </div>
+            <div class="">
+                <button
+                (click)="viewAddUser()"
+                  class="block w-full bg-indigo-600 rounded-md border-0 mr-4 p-2.5 py-1.5 pl-4 pr-4 text-white ring-0 ring-inset
+                   ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6 hover:bg-indigo-800 placeholder:text-gray-600" >
+                
+                  Agregar
+                  <i class="bi bi-plus"></i>
+                </button>
+            </div>
+            
+            </div>
+            </div>
+          
+          </form>
+        
+
+      </div>
+
+
+      <div id="cuadro"  class="pl-15">
+          <table mat-table [dataSource]="dataSource">
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef>Acciones</th>
+              <td mat-cell *matCellDef="let element">
+                <button
+                  mat-button
+                  class="buttons"
+                  id="edit"
+                  (click)="viewEditUser()"
+                >
+                  <mat-icon>edit </mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="identificacion" sticky>
+              <th mat-header-cell *matHeaderCellDef>Identificacion</th>
+              <td mat-cell *matCellDef="let element">{{ element.cedula }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="nombre">
+              <th mat-header-cell *matHeaderCellDef>Nombre</th>
+              <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="telefono">
+              <th mat-header-cell *matHeaderCellDef>Telefono</th>
+              <td mat-cell *matCellDef="let element" id="empresa">
+                {{ element.telefono }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="correo">
+              <th mat-header-cell *matHeaderCellDef>Correo</th>
+              <td mat-cell *matCellDef="let element" id="correo">
+                {{ element.correo }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="estado">
+              <th mat-header-cell *matHeaderCellDef>Estado</th>
+              <td mat-cell *matCellDef="let element" id="state">
+                {{ mostrarRol(element.idEstado) }}
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+      
+
+      <mat-paginator [length]="length" [pageSize]="5" aria-label="Select page">
+      </mat-paginator>
+
+      <div class="loader_content" *ngIf="load">
+        <app-loader></app-loader>
+      </div>
+  </div>
+</div>
+</div>

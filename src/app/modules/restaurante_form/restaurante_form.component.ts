@@ -2,8 +2,9 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { IRestaurante } from 'src/app/interfaces/IRestaurante';
+import { IRestaurante } from 'src/app/Interfaces/IRestaurante';
 import { RestauranteService } from 'src/app/services/restaurante.service';
+import { Env_Mensajes } from 'src/enviroments/Env_Mensajes';
 
 @Component({
   selector: 'app-restaurante_form',
@@ -13,7 +14,7 @@ import { RestauranteService } from 'src/app/services/restaurante.service';
 export class Restaurante_formComponent implements OnInit {
   selectedFile!: File;
   form: FormGroup;
-  load:boolean=false;
+  load:boolean=true;
   b64String!: string;
 
   constructor(
@@ -48,13 +49,13 @@ export class Restaurante_formComponent implements OnInit {
 
   onSubmit(){   
     const restaurante : IRestaurante={
-      ruc : this.form.value.ruc,
-      nombre : this.form.value.nombre,
-      correo : this.form.value.correo,
-      telefono : this.form.value.telefono,
+      ruc :       this.form.value.ruc,
+      nombre :    this.form.value.nombre,
+      correo :    this.form.value.correo,
+      telefono :  this.form.value.telefono,
       direccion : this.form.value.direccion,
-      logotipo : this.b64String,
-      contrasena : this.form.value.contrasena
+      logotipo :  this.b64String,
+      contrasena :this.form.value.contrasena
     };
     
     if(this.form.valid && this.b64String){
@@ -64,10 +65,10 @@ export class Restaurante_formComponent implements OnInit {
 
     this._restauranteService.registrarDatos(restaurante).subscribe(response=>{
       this.load = false;     
-      console.log("Datos registrados");
+      console.log(Env_Mensajes.datosRegistrados);
     },error=>{
       this.load = false;
-      console.log("NO SE PUDO REGISTRAR EL RESTAURANTE. ",error);
+      console.log(Env_Mensajes.datosNoRegistrados,error);
     });
     }
   }
