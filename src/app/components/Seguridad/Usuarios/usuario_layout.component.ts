@@ -8,6 +8,8 @@ import { Usuario } from 'src/app/Interfaces/Usuario';
 import { UsuarioService } from 'src/app/services/Usuario.service';
 import { MatDialog } from '@angular/material/dialog';
 import { EditUserComponent } from '../../Modales/Modal-Usuario/edit-user/edit-user.component';
+import { TableColumn } from 'src/app/Interfaces/TableColumn';
+import { empty } from 'rxjs';
 
 @Component({
   selector: 'app-usuario_layout',
@@ -16,17 +18,27 @@ import { EditUserComponent } from '../../Modales/Modal-Usuario/edit-user/edit-us
 })
 export class Usuario_layoutComponent implements OnInit,AfterViewInit {
 
+  
+  tableData: Array<Usuario> = [];
+  tableColumns: Array<TableColumn> =[
+    { title:'Identificación', nameProperty:'cedula',fct: (element: Usuario) =>`${element.cedula}` },
+    { title:'Nombre', nameProperty:'nombre',fct: (element: Usuario) =>`${element.nombre}` },
+    { title:'Empresa', nameProperty:'idEmpresa',fct: (element: Usuario) =>this.mostrarEmpresa(element.idEmpresa) },
+    { title:'Estado', nameProperty:'idEstado',fct:(element: Usuario) =>this.mostrarRol(element.idEstado) },
+
+  ];
+
   form:FormGroup;
   selectedOption!:string;
 
   datosTabla: Usuario[]= [];
-  dataSource = new MatTableDataSource<Usuario>(this.datosTabla);
-  displayedColumns: string[] = ['action', 'identificacion', 'nombre', 'telefono' ,'correo','estado'];
+  dataSource = new MatTableDataSource<Usuario>();
+
   
   length! : number;
   load:boolean=false;
 
-  @ViewChild(MatPaginator) paginacionTabla!: MatPaginator
+  @ViewChild(MatPaginator) paginator!: MatPaginator
 
   constructor(
     private fb: FormBuilder,
@@ -57,23 +69,18 @@ export class Usuario_layoutComponent implements OnInit,AfterViewInit {
     this.length = this.datosTabla.length;
   }
   ngAfterViewInit(): void {
-    this.dataSource.paginator=this.paginacionTabla;
+    this.dataSource.paginator=this.paginator;
   }
 
   obtenerDatos(){
     this._usuarioServicio.obtenerTodosUsuarios().subscribe({ next: (response) => {
       if (response.code) {
-        this.dataSource.data = response.data;
-        
-        
-        console.log(response)
+        this.tableData = response.data;
+        console.log(this.tableData)
       } else {
         console.log('No se encontraron datos', 'Oops');
-        
       }
       },
-
-
     })
   }
 
@@ -82,21 +89,27 @@ export class Usuario_layoutComponent implements OnInit,AfterViewInit {
     switch(id){
       case id=1:
          return "Activo";
-         break;
       case id=2:
         return "Inactivo";
-        break;
       case id=3:
         return "Bloqueado";
-        break;
         default:
         return "No hay rol";
-        break;
-        
-      
- 
     }
+  }
 
+   
+  mostrarEmpresa(id:number){
+    switch(id){
+      case id=1:
+         return "Viamatica";
+      case id=2:
+        return "Empresa 2";
+      case id=3:
+        return "A";
+        default:
+        return "No hay empresa asignada";
+    }
   }
 
   rowSelect(element:any){
@@ -106,6 +119,7 @@ export class Usuario_layoutComponent implements OnInit,AfterViewInit {
     return this.nombreUsuarioObtenido = this.userRowData.nombreUsuario;
     */
   }
+
   viewAddUser(){
     this.dialog.open(AddUserComponent,{
       width:'60%',

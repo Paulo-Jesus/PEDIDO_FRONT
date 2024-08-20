@@ -61,12 +61,12 @@ export class AsignarRolesComponent implements OnInit, AfterViewInit{
   }
 
   toggleEstado(role: Role): void {
-    role.estado = role.estado === 1? 2 : 1;
+    role.idEstado = role.idEstado === 1? 2 : 1;
     this.actualizarEstado(role);
   }
 
   actualizarEstado(role: Role): void {
-    const updatedRol = { ...role, estado: role.estado };
+    const updatedRol = { ...role, estado: role.idEstado };
 
     this.roleService.updateRol(updatedRol).subscribe((data: any) => {
       console.log('Estado actualizado:', data);
@@ -80,7 +80,7 @@ export class AsignarRolesComponent implements OnInit, AfterViewInit{
     const filteredRoles = this.allRoles.filter((role) => {
       return (
         (!this.selectedPerfil || role.nombre === this.selectedPerfil) &&
-        (!this.selectedEstado || role.estado === selectedEstadoNumber)
+        (!this.selectedEstado || role.idEstado === selectedEstadoNumber)
       );
     });
   

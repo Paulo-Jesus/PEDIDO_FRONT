@@ -12,8 +12,10 @@ export class TableComponent<T> implements OnInit, OnChanges {
   @Input()
   tableColumns: Array<TableColumn> = [];
 
+  @Input() acciones: boolean = false;
+
   @Input()
-  tableData: Array<T> = [];
+  tableData: any[] = [];
 
   displayedColumns: Array<string> = [];
   dataSource: MatTableDataSource<T> = new MatTableDataSource();
@@ -29,6 +31,9 @@ export class TableComponent<T> implements OnInit, OnChanges {
 
   ngOnInit():void {
     this.displayedColumns = this.tableColumns.map((c) => c.nameProperty);
+    if(this.acciones){
+      this.displayedColumns.unshift('acciones')
+    }
     this.dataSource = new MatTableDataSource(this.tableData);
   }
 

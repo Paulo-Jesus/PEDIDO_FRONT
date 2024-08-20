@@ -1,5 +1,6 @@
 export interface UsuarioBlock {
     nombre : string;
-    nombreUsuario : string;
-    estado : number;
+    correo: string;
+    nombreRol : string;
+    nombreEstado: string;
 }

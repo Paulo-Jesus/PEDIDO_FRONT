@@ -1,5 +1,5 @@
 import { Dialog } from '@angular/cdk/dialog';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { AgregarMenuComponent } from '../agregar-menu/agregar-menu.component';
@@ -8,6 +8,9 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { ProductoService } from 'src/app/services/producto.service';
 import { Producto } from 'src/app/Interfaces/Producto';
 import { ModificarMenuComponent } from '../modificar-menu/modificar-menu.component';
+import { TableColumn } from 'src/app/Interfaces/TableColumn';
+import { Menu } from 'src/app/Interfaces/Menu';
+import { MatPaginator } from '@angular/material/paginator';
 interface Hora {
   value: string;
   viewValue: string;
@@ -18,7 +21,20 @@ interface Hora {
   templateUrl: './registro-menu.component.html',
   styleUrls: ['./registro-menu.component.css']
 })
-export class RegistroMenuComponent implements OnInit  {
+export class RegistroMenuComponent implements OnInit, AfterViewInit  {
+
+  tableData: Array<Producto> = [];
+  tableColumns: Array<TableColumn> =[
+    { title:'Nombre', nameProperty:'nombre',fct: (element: Producto) =>`${element.nombre}` },
+    { title:'Categoría', nameProperty:'categoria',fct: (element: Producto) =>`${element.categoria}` },
+    { title:'Precio', nameProperty:'precio',fct: (element: Producto) =>`${element.precio}` },
+    
+
+  ];
+  //paginator
+  length! : number;
+  @ViewChild(MatPaginator) paginator! : MatPaginator;
+  
   form:FormGroup;
   selectedHoraI: string | undefined;
   selectedHoraF: string | undefined;
@@ -30,7 +46,7 @@ export class RegistroMenuComponent implements OnInit  {
   datosProducto: Producto[]=[];
   dataSourceProducto = new MatTableDataSource<Producto>(this.datosProducto);
   dataSource = new MatTableDataSource();
-  displayedColumns: string[] = ['nombre', 'categoria', 'precio' , 'opcion'];
+  
 
   horas: Hora[] = [];
   constructor(
@@ -65,12 +81,14 @@ export class RegistroMenuComponent implements OnInit  {
   ngOnInit(): void {
     this.obtenerProductos(1)
   }
-
+  ngAfterViewInit(): void {
+    this.dataSource.paginator=this.paginator;
+  }
   obtenerProductos(id:number){
     this._productoServicio.obtenerProductos(id).subscribe({ next: (response) => {
         if (response.code) {
-          this.dataSourceProducto.data = response.data;
-          console.log(response)
+          this.tableData= response.data;
+          console.log(this.tableData)
         } else {
           console.log('No se encontraron datos', 'Oops');
         }

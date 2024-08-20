@@ -12,6 +12,7 @@ import { UsuarioService } from 'src/app/services/Usuario.service';
 import { Usuario } from 'src/app/Interfaces/Usuario';
 import { Iestado } from 'src/app/Interfaces/iestado';
 import { FormGroup, FormBuilder} from '@angular/forms';
+import { TableColumn } from 'src/app/Interfaces/TableColumn';
 @Component({
   selector: 'app-ver-roles',
   templateUrl: './ver-roles.component.html',
@@ -19,20 +20,31 @@ import { FormGroup, FormBuilder} from '@angular/forms';
 })
 export class VerRolesComponent implements OnInit{
 
-  displayedColumns: string[] = ['perfil', 'estado'];
+  tableData: Array<Role> = [];
+  tableColumns: Array<TableColumn> =[
+    { title:'Perfil', nameProperty:'nombre',fct: (element: Usuario) =>`${element.nombre}` },
+    { title:'Estado', nameProperty:'idEstado',fct:(element: Usuario) =>this.mostrarRol(element.idEstado) },
+
+  ];
+
+  //estado deberia ser un toggle
+  datosTabla: Role[] = [];
+  dataSource: MatTableDataSource<Role> = new MatTableDataSource<Role>();
+
+  
   listEstados: any[] = [];
   listPerfiles: string[] = [];
-  allRoles: Role[] = [];
-  dataSource: MatTableDataSource<Role> = new MatTableDataSource<Role>();
+  
   selectedPerfil: string = '';
   selectedEstado: string = '';
 
   pageSize: number = 0;
+  length! : number;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   
   constructor(
-          private roleService: RolesService, 
+          private _roleService: RolesService, 
           private estadoServices: EstadosService,
           public dialog: MatDialog, 
           private _snackBar: MatSnackBar) {}
@@ -40,17 +52,19 @@ export class VerRolesComponent implements OnInit{
   ngOnInit(): void {
     this.obtenerRoles();
     this.obtenerEstados();
+    this.getRoles();
+    this.length = this.datosTabla.length;
   }
 
   toggleEstado(role: Role): void {
-    role.estado = role.estado === 1? 2 : 1;
+    role.idEstado = role.idEstado === 1? 2 : 1;
     this.actualizarEstado(role);
   }
 
   actualizarEstado(role: Role): void {
-    const updatedRol = { ...role, estado: role.estado };
+    const updatedRol = { ...role, estado: role.idEstado };
 
-    this.roleService.updateRol(updatedRol).subscribe((data: any) => {
+    this._roleService.updateRol(updatedRol).subscribe((data: any) => {
       console.log('Estado actualizado:', data);
       this.applyFilter();
     });
@@ -59,10 +73,10 @@ export class VerRolesComponent implements OnInit{
   applyFilter(): void {
     const selectedEstadoNumber = this.selectedEstado === 'Activo' ? 1 : this.selectedEstado === 'Inactivo' ? 2 : '';
   
-    const filteredRoles = this.allRoles.filter((role) => {
+    const filteredRoles = this.datosTabla.filter((role) => {
       return (
         (!this.selectedPerfil || role.nombre === this.selectedPerfil) &&
-        (!this.selectedEstado || role.estado === selectedEstadoNumber)
+        (!this.selectedEstado || role.idEstado === selectedEstadoNumber)
       );
     });
   
@@ -74,18 +88,30 @@ export class VerRolesComponent implements OnInit{
     this.selectedEstado = '';
   }
   
+
+  getRoles(){
+    this._roleService.getRoles().subscribe({next:(response)=> {
+      if (response.code) {
+        this.tableData = response.data;
+        console.log(this.tableData)
+      } else {
+        console.log('No se encontraron datos', 'Oops');
+      }
+    },
+  })
+  }
   
 
 
   obtenerRoles() {
-    this.roleService.getRoles().subscribe((data: { data: any[]; }) => {
-      this.allRoles = data.data.map((role: any) => ({
+    this._roleService.getRoles().subscribe((data: { data: any[]; }) => {
+      this.datosTabla = data.data.map((role: any) => ({
         ...role
       }));
-      this.dataSource = new MatTableDataSource(this.allRoles);
+      this.dataSource = new MatTableDataSource(this.datosTabla);
       this.dataSource.paginator = this.paginator;
-      //console.log(this.allRoles)
-      this.listPerfiles = this.allRoles.map((role) => role.nombre);
+      //console.log(this.datosTabla)
+      this.listPerfiles = this.datosTabla.map((role) => role.nombre);
     });
   }
 
@@ -113,6 +139,19 @@ export class VerRolesComponent implements OnInit{
     });
   }
 
+  
+  mostrarRol(id:number){
+    switch(id){
+      case id=1:
+         return "Activo";
+      case id=2:
+        return "Inactivo";
+      case id=3:
+        return "Bloqueado";
+        default:
+        return "No hay rol";
+    }
+  }
   addRol(): void {
     this.obtenerRoles(); 
   }

@@ -1,14 +1,21 @@
-<div class="body_container">
-    <div class="body_left_container">
+<div class="flex h-screen  w-screen overflow-hidden">
+
+    <div class="w-1/5 lg:block hidden">
         <app-sidebar></app-sidebar>
     </div>
-    <div class="body_right_container">
-        <div class="main_container ">
+
+    
+    <div class="flex-auto h-full w-4/5 p-2 pt-0  ">
+        
+        
             
+            <div class="h-14">
             <app-header></app-header>
+            </div>
             <div class="container_router_outle h-full w-full">
                 <router-outlet ></router-outlet>                
             </div>
-        </div>
+    
+        
     </div>
 </div>

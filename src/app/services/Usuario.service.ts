@@ -11,6 +11,7 @@ import { Usuario, UsuarioEditar } from '../Interfaces/Usuario';
 export class UsuarioService {
 
   url = Enviroment.endpoint+"/api";
+  url2 =Enviroment.endpoint
 
   constructor(private http:HttpClient) { }
 
@@ -42,21 +43,21 @@ export class UsuarioService {
 
   //usuarios bloqueados
 
-  public obtenerTodos():Observable<ResponseApi>{
-    const urlApi = `${this.url}/UsuariosBloqueados`
+  public obtenerTodosBloqueados():Observable<ResponseApi>{
+    const urlApi = `${this.url2}/UsuariosBloqueados`
     return this.http.get<ResponseApi>(urlApi);
   }
 
   
 
   public obtenerPorNombreUsuario(nombreUsuario:string):Observable<any>{
-    const urlApi = `${this.url}/BuscarUsuarioBloqueado/${nombreUsuario}`;
+    const urlApi = `${this.url2}/BuscarUsuarioBloqueado/${nombreUsuario}`;
     const body = nombreUsuario;
     return this.http.post(urlApi,body);
   }
 
   public desbloquearCuenta(nombreUsuario:string):Observable<any>{
-    const urlApi = `${this.url}/desbloquearUsuario/${nombreUsuario}`;
+    const urlApi = `${this.url2}/desbloquearUsuario/${nombreUsuario}`;
     const body = nombreUsuario;
     return this.http.put(urlApi,body);
   }

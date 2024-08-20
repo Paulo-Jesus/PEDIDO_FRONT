@@ -1,7 +1,5 @@
-<div class="flex h-full w-full">
-  <div class="rounded-lg p-2 pt-0 h-full w-full">
-    <div class="h-full w-full justify-center items-center relative">
-      <div
+
+<div
       id="cuadro"
       class="pl-12 pt-4 pr-2 mb-8 rounded-lg items-center justify-center w-full "
     >
@@ -30,10 +28,10 @@
 
 
           <div >
-            <label>Modelo:</label>  
+            <label>Módulo:</label>  
             <div class="mt-1">       
                 <mat-form-field appearance="outline" class="filtro">
-                  <mat-label class="text-gray-300 italic text-sm">Seleccione pedidos</mat-label>
+                  <mat-label class="text-gray-300 italic text-sm">Seleccione un módulo</mat-label>
                   <mat-select [(ngModel)]="selectedEstado">
                     <mat-option *ngFor="let item of listEstados" [value]="item.nombre">
                       {{ item.nombre }}
@@ -75,11 +73,8 @@
               </div>
 
             </div>
-         
        </div>
 
-    
- 
  
       </div>
 
@@ -97,7 +92,7 @@
   >
 </mat-paginator>
 
-  </div>
+  
 
 
 <div class="loader_content" *ngIf="load">

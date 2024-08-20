@@ -16,7 +16,7 @@ import * as XLSX from "xlsx";
 })
 export class ReportesComponent implements OnInit,AfterViewInit{
 
-  // displayedColumns: TableContent[] = ['fecha de Pedido', 'nombreUsuario', 'nombrePedido', 'precioProducto', 'cantidad'];
+  
   tableData: Array<Pedidos> = [];
   tableColumns: Array<TableColumn> =[
     { title:'Fecha de Pedido', nameProperty:'fechaPedido',fct:(element: Pedidos) =>`${element.fechaPedido}` },

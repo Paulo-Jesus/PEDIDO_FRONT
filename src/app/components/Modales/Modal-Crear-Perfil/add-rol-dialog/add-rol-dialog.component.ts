@@ -30,7 +30,7 @@ export class AddRolDialogComponent {
     const rol: Role = {
       nombre: formValue.nombre,
       idRol:formValue.id,
-      estado: formValue.estado ? 1 : 2 
+      idEstado: formValue.estado ? 1 : 2 
     };
     if (formValue.nombre == null || formValue.nombre == '') {
       this.openSnackBar();
