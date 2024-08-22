@@ -1,0 +1,79 @@
+<div
+      id="cuadro"
+      class="pl-12 pt-6 pr-2 mb-8 rounded-lg items-center justify-center w-full "
+    >
+    <div class="text-center mb-4">
+      <label class="text-xl font-bold text-violet-500"
+        >Registro de Menú</label
+      >
+    </div>
+
+      <form [formGroup]="form" >
+        <div class="flex flex-row flex-wrap gap-4 pl-10"> 
+
+            <div>
+              
+              <label>Fecha:</label>
+              <div class="mt-1">
+              <mat-form-field class="content_id" appearance="outline">
+                <input matInput type="text" [value]="todayDate" readonly  maxlength="10">
+              </mat-form-field>
+            </div>
+            </div>
+
+
+            <div>
+            <label>Hora Inicio:</label>
+            <div class="mt-1">
+              <mat-form-field class="content_id" appearance="outline">
+                <mat-select [(ngModel)]="selectedHoraI" name="hora" formControlName="horaI" placeholder="00:00">
+                  <mat-option *ngFor="let hora of horas" [value]="hora.value">
+                    {{ hora.viewValue }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            </div>
+
+            <div >
+            <label>Hora Fin:</label>
+            <div class="mt-1">
+              <mat-form-field class="content_id" appearance="outline">
+                <mat-select [(ngModel)]="selectedHoraF" name="hora" formControlName="horaI"placeholder="23:55">
+                  <mat-option *ngFor="let hora of horas" [value]="hora.value">
+                    {{ hora.viewValue }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            </div>
+
+            
+
+  
+           
+          
+              <div class="flex flex-row gap-2 pt-8 pl-4">
+                <div>
+                <button class=" block w-full bg-purple-700 rounded-md border-0 mr-4 p-2.5 py-1 pr-4 text-white ring-0 ring-inset sm:text-sm sm:leading-6 hover:bg-indigo-800 placeholder:text-gray-600"   (click)="openDialogAgregar()">
+                  Agregar
+                  <i class="bi bi-plus"></i>          
+                </button>
+              </div>
+              <div>
+                <button class="block w-full bg-purple-600 rounded-md border-0 mr-4 p-2.5 py-1  pr-4 text-white ring-0 ring-inset ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6 hover:bg-indigo-800 placeholder:text-gray-600" (click)="Guardar()">
+                  Guardar
+                  <i class="bi bi-floppy"></i>          
+                </button>
+              </div>
+              </div>
+            </div>
+        </form>
+      </div>
+        <div id="cuadro"  *ngIf="tableData.length"  class="pl-15">
+          <app-table [tableColumns]="tableColumns" [tableData]="tableData" [acciones]="true"> 
+          </app-table>
+          </div>
+       
+          
+  

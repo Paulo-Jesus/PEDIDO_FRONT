@@ -1,0 +1,117 @@
+
+      <div
+      id="cuadro"
+      class="pl-12 pt-6 pr-2 mb-8 rounded-lg items-center justify-center w-full "
+    >
+      <div class="text-center mb-4">
+        <label class="text-xl font-bold text-violet-500"
+          >Registro de Usuarios</label
+        >
+      </div>
+
+      <form [formGroup]="form">
+      <div class="flex flex-row flex-wrap gap-4 pl-10">     
+          <div>
+                <label
+                  class="block text-sm font-medium  text-gray-900">
+                  Identificacion:</label
+                  >
+                  <div class=" relative mt-1 ">
+                    <div
+                      class=""
+                    ></div>
+                    
+                     <input
+                      matInput
+                      type="number"
+                      maxlength="15"
+                      formControlName="cedula"
+                      class="rounded-md p-2.5 py-[15px] border-gray-400 hover:border-stone-900"
+                    />
+                  
+                </div>
+            </div>
+
+          <div>
+                <label
+
+              class="block text-sm font-medium  text-gray-900"
+              >Nombre:</label
+              >
+              <div class="relative mt-1 ">
+                  <input
+                    matInput
+                    type="text"
+                    maxlength="30"
+                    formControlName="nombre"
+                    class=" rounded-md p-2.5 py-[15px] border-gray-400 hover:border-stone-900"
+                  />
+                
+              </div>
+          </div>
+
+          <div>
+                <label
+                
+                class="block text-sm font-medium  text-gray-900"
+                >Empresa:</label
+              >
+                <div class=" mt-1 ">
+                <div
+                  class=""
+                ></div>
+                <mat-form-field appearance="outline">
+                    <mat-select
+                     id="empresa"
+                     class="border-gray-400  "
+                     placeholder="Seleccione una opción"
+                     formControlName="idEmpresa"
+                      >
+                      <mat-option *ngFor="let item of datosEmpresa" [value]="item.razonSocial" >
+                      {{item.razonSocial}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+          </div>
+
+          <div class="flex flex-row gap-2 pt-6">
+            <div class="">
+                <button  
+                class="block w-full bg-purple-600 rounded-md border-0 mr-4 p-2.5 py-1.5 pl-4 pr-4 text-white ring-0 ring-inset ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6 hover:bg-indigo-800 placeholder:text-gray-600" id="search">
+
+                  Buscar
+                  <i class="bi bi-search"></i>
+                </button>
+            </div>
+            <div class="">
+                <button
+                (click)="viewAddUser()"
+                  class="block w-full bg-indigo-600 rounded-md border-0 mr-4 p-2.5 py-1.5 pl-4 pr-4 text-white ring-0 ring-inset
+                   ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6 hover:bg-indigo-800 placeholder:text-gray-600" >
+                
+                  Agregar
+                  <i class="bi bi-plus"></i>
+                </button>
+            </div>
+            
+            </div>
+            </div>
+          
+          </form>
+        
+
+      </div>
+
+
+      <div id="cuadro"  *ngIf="tableData.length"   class="pl-15">
+        <app-table [tableColumns]="tableColumns" [tableData]="tableData"  [acciones]="true"> 
+        </app-table>
+        </div>
+      
+
+    
+
+      <div class="loader_content" *ngIf="load">
+        <app-loader></app-loader>
+      </div>

@@ -1,17 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Enviroment } from 'src/enviroments/enviroment';
+import { Environment } from 'src/environments/environment';
 import { IRestaurante } from '../Interfaces/IRestaurante';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestauranteService {
-  private ApiRegistrar = Enviroment.ApiRegistrar;
-  private ApigetRestaurantes = Enviroment.ApigetRestaurantes;
+  private ApiRegistrar = Environment.ApiRegistrar;
+  private ApigetRestaurantes = Environment.ApigetRestaurantes;
 
-  url = Enviroment.endpoint;
+  url = Environment.endpoint;
   constructor(private http:HttpClient) { }
 
   public registrarDatos(datos : IRestaurante):Observable<Object>{

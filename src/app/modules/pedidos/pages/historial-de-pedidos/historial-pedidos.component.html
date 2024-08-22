@@ -1,0 +1,63 @@
+ <div
+    id="cuadro"
+      class="pl-12 pt-6 pr-2  mb-8 rounded-lg items-center justify-center w-full"
+      >
+        <div class="text-center mb-4">
+          <label class="text-xl font-bold text-violet-500"
+            >Historial de Pedidos</label
+          >
+        </div>
+
+        <div class="flex flex-row flex-wrap gap-4 pl-10">
+
+        <div class="relative mt-2">
+          <mat-form-field appearance="outline">
+            <input matInput [(ngModel)]="startDate" [matDatepicker]="startPicker" placeholder="Fecha Desde">
+            <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+            <mat-datepicker #startPicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+    
+        <div class="relative mt-2">
+          <mat-form-field appearance="outline">
+            <input matInput [(ngModel)]="endDate" [matDatepicker]="endPicker" placeholder="Fecha Hasta">
+            <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+            <mat-datepicker #endPicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        
+    
+        <div class="flex flex-row pl-10 gap-2 pt-4">
+          <div class="relative">
+            <button
+            (click)="applyFilter()"
+            id="buscar"
+            class="block w-full bg-indigo-600 rounded-md border-0 mr-4 p-2.5 py-1.5 pl-4 pr-4 text-white ring-0 ring-inset ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6 hover:bg-indigo-800 placeholder:text-gray-600"
+          >
+            Buscar <i class="bi bi-search"></i>
+          </button>
+          </div>
+
+          <div class="relative">
+            <button
+            (click)="exportToExcel()"
+            id="buscar"
+            class="block w-full bg-teal-700 rounded-md border-0 mr-4 p-2.5 py-1.5 pl-4 pr-4 text-white ring-0 ring-inset ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6 hover:bg-teal-950 placeholder:text-gray-600"
+          >
+            Descargar <i class="bi bi-box-arrow-down"></i>
+          </button>
+        </div>
+      </div>
+
+  </div>
+
+    <div id="cuadro" *ngIf="tableData.length" class=" pt-4">
+    <app-table
+     [tableColumns]="tableColumns" 
+    [tableData]="tableData">
+     </app-table>
+     </div>
+  
+
+  
+  

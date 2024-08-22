@@ -2,16 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Role } from 'src/app/Interfaces/role';
-import { Enviroment } from 'src/enviroments/enviroment';
+import { Environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RolesService {
   
-  private myAppUrl: string = Enviroment.endpoint;
-  private myApiUrl: string = '/CrearPerfil/GetListRoles';
-  private ObtenerListaRoles =   Enviroment.ApiGetRoles;
+  
+  
+  private ObtenerListaRoles =   Environment.ApiGetRoles;
   constructor(private http:HttpClient) { }
 
   getRoles(): Observable<any> { 

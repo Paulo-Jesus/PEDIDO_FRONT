@@ -1,0 +1,72 @@
+<div
+      id="cuadro"
+      class="pl-12 pt-4 pr-2 mb-8 rounded-lg items-center justify-center w-full "
+    >
+      <div class="text-center mb-4">
+        <label class="text-xl font-bold text-violet-500"
+          >Desbloquear Usuario</label
+        >
+      </div>
+
+
+        <div class="flex flex-row flex-wrap gap-4 pl-10">
+          <div >
+            <label>Rol:</label>   
+            <div class="mt-1">      
+              <mat-form-field appearance="outline" >
+                <mat-select [ngModel]="selectedOption" (ngModelChange)="setSelection($event)"
+                class="border-gray-400 "
+                placeholder="Seleccione una opción"> 
+                  <mat-option *ngFor="let data of rolesDatos" [value]="data.nombre">{{data.nombre}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div >
+          <label>Correo Electrónico:</label>   
+          <div class=" relative mt-1">
+            <div
+            class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+          ></div>
+              
+                <mat-label class="text-gray-300 italic text-sm "></mat-label>
+                <input type="text" matInput class=" rounded-md py-[15px]  border-zinc-400" #correo >
+              
+            </div>
+          </div>
+
+          <div class="mt-3 justify-start">
+              <button (click)="limpiarDatos()"class="rounded px-4 bg-red-600 text-white mt-3 p-2 hover:bg-red-800"  (click)="limpiarDatos()">
+                <i class="bi bi-trash size-2"></i>              
+              </button>
+          </div> 
+          
+        
+        <div class="flex flex-row gap-2 pt-8 pl-10">
+          <div class="">
+            <button (click)="buscarUsuario(correo.value,correo)" class="block w-full bg-purple-800 rounded-md border-0 mr-4 p-2.5 py-1 pl-4 pr-4 text-white ring-0 ring-inset ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6 hover:bg-purple-900 placeholder:text-gray-600" id="search" >
+              Buscar
+              <i class="bi bi-search "></i>
+            </button>
+          </div>
+          <div class="">
+            <button (click)="desbloquearUsuario()" class="block w-full bg-pink-600 rounded-md border-0 mr-4 p-2.5 py-1 pl-4 pr-4 text-white ring-0 ring-inset
+            ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6 hover:bg-pink-800 placeholder:text-gray-600" id="unlock" >
+              Desbloquear
+              <i class="bi bi-unlock"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="cuadro"  *ngIf="tableData.length"   >
+      <app-table [tableColumns]="tableColumns" [tableData]="tableData"  [acciones]="true"> 
+      </app-table>
+      </div>
+    
+
+<div class="loader_content" *ngIf="load">
+  <app-loader ></app-loader>
+</div>

@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
-import { Enviroment } from 'src/enviroments/enviroment';
+import {  Environment } from 'src/environments/environment';
 import { Producto } from '../Interfaces/Producto';
 import { ResponseApi, ResponseApiProducto } from '../Interfaces/response';
 @Injectable({
   providedIn: 'root'
 })
 export class ProductoService {
-  private ObtenerProductos = Enviroment.ApiProductoObtener;
-  private IngresarProductos = Enviroment.ApiProductoIngresar;
-  private EstadoProducto = Enviroment.ApiProductoEstado;
+  private ObtenerProductos = Environment.ApiProductoObtener;
+  private IngresarProductos = Environment.ApiProductoIngresar;
+  private EstadoProducto = Environment.ApiProductoEstado;
 
   constructor(private http: HttpClient) { }
 

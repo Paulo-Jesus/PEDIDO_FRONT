@@ -1,0 +1,26 @@
+<div class="flex h-screen  w-screen overflow-hidden bg-zinc-50">
+
+    <div class="w-1/5 lg:block hidden bg-white">
+        <app-sidebar></app-sidebar>
+    </div>
+
+    
+    <div class="flex-auto h-full w-4/5 pt-0  ">
+        
+      
+            <div  class=" bg-slate-50 shadow-sm pt-2 w-full h-12">
+            <app-header></app-header>
+            </div>
+            
+
+            <div class="container_router_outle h-full w-full">
+                <router-outlet >
+                </router-outlet>                
+            </div>
+           
+            
+        
+    
+        
+    </div>
+</div>

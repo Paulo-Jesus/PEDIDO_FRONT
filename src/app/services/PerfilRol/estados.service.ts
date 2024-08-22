@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Enviroment } from 'src/enviroments/enviroment';
+import { Environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EstadosService {
 
-  private myAppUrl: string = Enviroment.endpoint;
-  private ObtenerListaEstado =   Enviroment.ApiObtenerListaEstado;
+  private myAppUrl: string = Environment.endpoint;
+  private ObtenerListaEstado =   Environment.ApiObtenerListaEstado;
   private myApiUrl: string= '/CrearPerfil/GetListEstados';
 
   constructor(private http:HttpClient) { }

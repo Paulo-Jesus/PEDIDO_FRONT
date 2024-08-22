@@ -1,8 +1,8 @@
 export class Menu {
-    IdMenu?:number
-    IdProveedor?:number
-    Descripcion?: string
-    FechaInicio?:Date
-    FechaFin?: Date
-    Platillos: number[] = []
+    idMenu?:number
+    idProveedor?:number
+    descripcion?: string
+    fechaInicio?:Date
+    fechaFin?: Date
+    platillos: number[] = []
 }

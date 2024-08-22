@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
-import { Enviroment } from 'src/enviroments/enviroment';
+import { Enviroment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
 import { Menu } from '../Interfaces/Menu';
 @Injectable({
