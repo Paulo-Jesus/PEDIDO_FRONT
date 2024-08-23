@@ -21,9 +21,9 @@ export class UsuarioService {
     return this.http.get<ResponseApiUsuario>(urlApi);
   }
 
-  public BuscarUsuarios(cedula:string, nombre:string,idEmpresa:number):Observable<ResponseApiUsuario>{
+  public BuscarUsuarios(params: any):Observable<ResponseApiUsuario>{
     const urlApi = `${this.url}/Usuarios/Buscar`
-    return this.http.get<ResponseApiUsuario>(urlApi);
+    return this.http.get<ResponseApiUsuario>(urlApi, {params});
   }
   public AgregarUsuarios(request:Usuario):Observable<ResponseApiUsuario>{
     const urlApi = `${this.url}/Usuarios/Agregar`

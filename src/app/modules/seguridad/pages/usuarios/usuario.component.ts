@@ -19,6 +19,7 @@ import { Usuario } from 'src/app/Interfaces/Usuario';
 export class UsuarioComponent implements OnInit {
 
   
+
   tableData: Array<Usuario> = [];
   tableColumns: Array<TableColumn> =[
     { title:'Identificación', nameProperty:'cedula',fct: (element: Usuario) =>`${element.cedula}` },
@@ -31,7 +32,8 @@ export class UsuarioComponent implements OnInit {
   form:FormGroup;
   selectedOption!:string;
 
-  datosTabla: Usuario[]= [];
+  
+  datosFiltrados:Usuario[]= [];
   datosEmpresa: Empresa[]=[];
 
   
@@ -51,16 +53,11 @@ export class UsuarioComponent implements OnInit {
 
   createForm(){
     return this.fb.group({
-      idUsuario:      [0],
-      cedula:         ['', [Validators.required, Validators.maxLength(10)]],
+     
+      cedula:         ['', [Validators.required, Validators.maxLength(13)]],
       nombre:         ['', [Validators.required, Validators.maxLength(50)]],
-      correo:         ['', [Validators.required, Validators.email, Validators.maxLength(60)]],
-      telefono:       ['', [Validators.required, Validators.maxLength(10)]],
-      direccion:      ['', [Validators.required, Validators.maxLength(70)]],
-      idRol:          ['', Validators.required],
       idEmpresa:      ['', Validators.required],
-      idEstado:       [false, Validators.required],
-      idCuenta:       [0]
+      
     });
   }
 
@@ -68,9 +65,19 @@ export class UsuarioComponent implements OnInit {
   ngOnInit() {
     this.obtenerDatos();
     this.getEmpresas();
-    this.length = this.datosTabla.length;
+    this.length = this.tableData.length;
   }
  
+  applyFilter():void{
+  
+    const formValue = this.form.value
+    this._usuarioServicio.BuscarUsuarios(formValue).subscribe(usuarios =>{
+      this.tableData = usuarios.data;
+      console.log(this.tableData)
+    });
+   
+    
+  }
 
   obtenerDatos(){
     this._usuarioServicio.obtenerTodosUsuarios().subscribe({ next: (response) => {
@@ -131,6 +138,8 @@ export class UsuarioComponent implements OnInit {
   //   return this.nombreUsuarioObtenido = this.userRowData.nombreUsuario;
     
   // }
+
+
 
   viewAddUser(){
     this.dialog.open(AddUserComponent,{

@@ -23,7 +23,7 @@ import { envRutas } from 'src/environments/env-rutas';
   styleUrls: ['./desbloquear-usuario.component.css']
 })
 export class DesbloquearUsuarioComponent implements OnInit {
-
+  
 
   tableData: Array<UsuarioBlock> = [];
   tableColumns: Array<TableColumn> =[
@@ -44,6 +44,8 @@ export class DesbloquearUsuarioComponent implements OnInit {
   nombreUsuariosFiltrados : any = {};
 
 
+
+  form:FormGroup;
   datosTabla : UsuarioBlock[] = [];
   rolesDatos: Role[]=[];
   checked! : boolean;
@@ -68,6 +70,7 @@ export class DesbloquearUsuarioComponent implements OnInit {
     private fb:FormBuilder
   )
   {
+    this.form = this.createForm();
   }
 
   ngOnInit(): void {
@@ -76,6 +79,15 @@ export class DesbloquearUsuarioComponent implements OnInit {
       this.length = this.datosTabla.length;
   }
 
+
+  
+  createForm(){
+    return this.fb.group({
+      correo:         ['', [Validators.required]],
+      nombreRol:         ['', [Validators.required, Validators.maxLength(50)]],
+      
+    });
+  }
   getBlockedUsers(){
     this._usuarioService.obtenerTodosBloqueados().subscribe((response: any)=>{
       this.tableData = response.data;

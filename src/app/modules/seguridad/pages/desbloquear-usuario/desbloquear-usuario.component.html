@@ -16,7 +16,9 @@
               <mat-form-field appearance="outline" >
                 <mat-select [ngModel]="selectedOption" (ngModelChange)="setSelection($event)"
                 class="border-gray-400 "
-                placeholder="Seleccione una opción"> 
+                placeholder="Seleccione una opción"
+                formControlName="nombreRol"> 
+                
                   <mat-option *ngFor="let data of rolesDatos" [value]="data.nombre">{{data.nombre}}</mat-option>
                 </mat-select>
               </mat-form-field>

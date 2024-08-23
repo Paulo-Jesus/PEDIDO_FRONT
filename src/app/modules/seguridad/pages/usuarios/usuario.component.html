@@ -67,7 +67,7 @@
                      placeholder="Seleccione una opción"
                      formControlName="idEmpresa"
                       >
-                      <mat-option *ngFor="let item of datosEmpresa" [value]="item.razonSocial" >
+                      <mat-option *ngFor="let item of datosEmpresa" [value]="item.idEmpresa" >
                       {{item.razonSocial}}
                       </mat-option>
                     </mat-select>
@@ -78,6 +78,7 @@
           <div class="flex flex-row gap-2 pt-6">
             <div class="">
                 <button  
+                (click)="applyFilter()"
                 class="block w-full bg-purple-600 rounded-md border-0 mr-4 p-2.5 py-1.5 pl-4 pr-4 text-white ring-0 ring-inset ring-gray-300 shadow-sm focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6 hover:bg-indigo-800 placeholder:text-gray-600" id="search">
 
                   Buscar
